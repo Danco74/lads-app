@@ -65,7 +65,7 @@ class Routes extends React.Component {
               render={() => (!this.isLoggedIn()
               ? (<Redirect to="/login"/>)
               : (<Lessons/>))}/>
-
+            <Route exact path="/lesson" component={Lesson}/>
             <Route exact path="/login" component={Login}/>
             <Route path="*" component={Page404}/>
 

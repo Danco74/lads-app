@@ -9,16 +9,16 @@ class Toolbox extends Component {
         this.state = { 
             //currentButton: ''
         }
-        this.toggleElementAdding = this.toggleElementAdding.bind(this);
+        // this.toggleElementAdding = this.toggleElementAdding.bind(this);
  //       this.addLessonContent = this.addLessonContent.bind(this);
     }
 
-    toggleElementAdding(buttonLabel) {
-        this.setState({ elementAdding: !this.state.elementAdding});
-        if(buttonLabel) {
-            this.props.toggleElementAdding(buttonLabel);
-        }
-    }
+    // toggleElementAdding(buttonLabel) {
+    //     this.setState({ elementAdding: !this.state.elementAdding});
+    //     if(buttonLabel) {
+    //         this.props.toggleElementAdding(buttonLabel);
+    //     }
+    // }
 
     // addLessonContent(newText) {
     //     //let newElement = {tag: this.state.currentButton, text: newText};
@@ -36,16 +36,16 @@ class Toolbox extends Component {
         return (
             <div className="toolbox">
                 <div className="btn-group">
-                    <Button label='h1' toggleNew={this.toggleElementAdding}/>
-                    <Button label='h2' toggleNew={this.toggleElementAdding}/>
-                    <Button label='h3' toggleNew={this.toggleElementAdding}/>
-                    <Button label='hr' toggleNew={this.toggleElementAdding}/>
-                    <Button label='br' toggleNew={this.toggleElementAdding}/>
-                    <Button label='p' toggleNew={this.toggleElementAdding}/>
-                    <Button label='a?' toggleNew={this.toggleElementAdding}/>
-                    <Button label='show' toggleNew={this.toggleElementAdding}/>
-                    <Button label='img' toggleNew={this.toggleElementAdding}/>
-                    <Button label={<i className="fa fa-floppy-o fa-2x" aria-hidden="true"></i>} toggleNew={this.toggleElementAdding}/>
+                    <Button label='+S' customAction={this.props.addSection}/>
+                    <Button label='+C' customAction={this.props.addContent}/>
+                    <Button label='~p' customAction={()=>this.props.changeContentType('paragraph')}/>
+                    <Button label='~code' customAction={()=>this.props.changeContentType('code')}/>
+                    <Button label='-' customAction={this.props.removeSelected}/>
+                    <Button label='^' customAction={()=>this.props.repositionSelected('up')}/>
+                    <Button label='v' customAction={()=>this.props.repositionSelected('down')}/>
+                    <Button label='' />
+                    <Button label='' />
+                    <Button label={<i className="fa fa-floppy-o fa-2x" aria-hidden="true"></i>} />
                 </div>
                 {/* {lessonElements} */}
                 {/* {form} */}

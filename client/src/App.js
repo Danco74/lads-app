@@ -12,7 +12,7 @@ class AppWrapper extends React.Component {
   render() {
     return (
       <div>
-      <Sidebar/>
+      {/* <Sidebar/> */}
       <BrowserRouter>
       
      

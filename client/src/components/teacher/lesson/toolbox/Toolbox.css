@@ -16,7 +16,7 @@
     display: block; 
     transition-property: width,height;
     transition-duration: .5s;
-    
+    color: white;
   }
   
   /* Add a background color on hover */
@@ -41,4 +41,24 @@
   margin-left:0;
   border-radius: 10px;
   border-style: outset;
+  }
+
+  textarea{
+    resize: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  form{
+    width: 100%;
+    height: 200px;
+  }
+
+  .submit-button{
+    position: relative;
+    width: 80px;
+    left: 600px;
+    bottom: 60px;
+    background-color: rgb(15, 179, 15);
+    color: white;
   }

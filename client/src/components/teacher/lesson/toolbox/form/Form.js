@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
 class Form extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state = {input: ''}
+        this.state = { input: '' }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
-        this.setState({input: event.target.value})
+        this.setState({ input: event.target.value })
     }
 
     handleSubmit(event) {
@@ -19,16 +19,15 @@ class Form extends Component {
     }
 
     componentWillMount() {
-        this.setState({input: this.props.text});
+        this.setState({ input: this.props.text });
     }
 
     render() {
         return (
-            <div className="header">
-                <form onSubmit={this.handleSubmit}>
-                    <input type='text' placeholder='Add text here' value={this.state.input} onChange={this.handleChange}/>
-                </form>
-            </div>
+            <form onSubmit={this.handleSubmit}>
+                <textarea type='text' placeholder='Add text here' value={this.state.input} onChange={this.handleChange} />
+                <input className='submit-button' type='submit' value='Save'/>
+            </form>
         );
     }
 }

@@ -1,5 +1,5 @@
-import React,{Component} from 'react';
-
+import React, { Component } from 'react';
+import '../style.css'
 import Form from './toolbox/form/Form'
 
 //const Code = (props) => (<code className={props.type}>Type:Code ||Text: {props.text}</code>)
@@ -10,15 +10,24 @@ class CustomElement extends Component {
     // componentWillReceiveProps() {
     //     this.selectType()
     // }
-    selectType(){
-        if(this.props.editing) {
-            return <Form text={this.props.text} editContent={this.props.editContent} sectionIndex={this.props.sectionIndex} contentIndex={this.props.contentIndex}/>
+
+    isSelected() {
+        return ((this.props.status.currentSection === this.props.sectionIndex && this.props.status.currentContent === this.props.contentIndex) ? 'selected' : '')
+    }
+
+    selectType() {
+        if (this.props.editing) {
+            return <Form text={this.props.text} editContent={this.props.editContent} sectionIndex={this.props.sectionIndex} contentIndex={this.props.contentIndex} />
         }
         switch (this.props.type) {
             case "paragraph":
-                return <p onDoubleClick={this.props.toggleEditing} className={this.props.type}>Type: Paragraph || Text: {this.props.text}</p>;
+                return <p onClick={this.props.selectHighlight} onDoubleClick={this.props.toggleEditing} className={`${this.props.type} ${this.isSelected()}`}>
+                    {this.props.text}
+                </p>;
             case "code":
-                return <code onDoubleClick={this.props.toggleEditing} className={this.props.type}>Type:Code ||Text: {this.props.text}</code>;
+                return <code onClick={this.props.selectHighlight} onDoubleClick={this.props.toggleEditing} className={`${this.props.type} ${this.isSelected()}`}>
+                    {this.props.text}
+                </code>;
         }
     }
     render() {
