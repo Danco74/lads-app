@@ -62,7 +62,7 @@ router.get('/:id', function (req, res) {
                     sectionId: rows[i].sectionId,
                     sectionHeader: rows[i].sectionHeader,
                     sectionViewIndex: rows[i].sectionViewIndex,
-                    content: []
+                    contents: []
                 }
     
                 if (getSectionIndex(rows[i].sectionId) != -1) {
@@ -74,13 +74,13 @@ router.get('/:id', function (req, res) {
     
                 var content = {
                     contentId: rows[i].contentId,
-                    contentType: rows[i].contentType,
+                    type: rows[i].contentType,
                     contentViewIndex: rows[i].contentViewIndex,
-                    contentText: rows[i].contentText
+                    text: rows[i].contentText
                 }
     
                 sections[getSectionIndex(rows[i].sectionId)]
-                    .content
+                    .contents
                     .push(content);
             }
     
