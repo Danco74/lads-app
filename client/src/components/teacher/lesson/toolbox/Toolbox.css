@@ -16,7 +16,7 @@
     display: block; 
     transition-property: width,height;
     transition-duration: .5s;
-    
+    color: white;
   }
   
   /* Add a background color on hover */
