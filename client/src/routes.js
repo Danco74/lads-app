@@ -2,9 +2,9 @@ import React from 'react';
 import MainApp from './';
 import Page404 from './common/404';
 import Login from './components/login/Login.js'
-import Lessons from './components/teacher/lessons/lessons'
-import Lesson from './components/teacher/lesson/lesson'
-import Home from './common/Home'
+import Lessons from './components/student/lessons/lessons'
+import Lesson from './components/student/lesson/lesson'
+import StudentHome from './components/student/home/StudentHome'
 import {Switch, Route, Redirect} from 'react-router-dom';
 
 const axios = require('axios');
@@ -65,6 +65,8 @@ class Routes extends React.Component {
               render={() => (!this.isLoggedIn()
               ? (<Redirect to="/login"/>)
               : (<Lessons/>))}/>
+
+              <Route exact path="/home" component={StudentHome}/>
             <Route exact path="/lesson" component={Lesson}/>
             <Route exact path="/login" component={Login}/>
             <Route path="*" component={Page404}/>

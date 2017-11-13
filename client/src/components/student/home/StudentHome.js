@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import Progress from "./Progress";
 import Quote from "./Quote";
 import PinnedLessons from "./Pinned";
+import './studentHome.css';
 
 class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            quote: '"Its not the altitude, its the attitude',
+            quote: "Its not the altitude, its the attitude",
             username: "Dan",
             authorization: "student",
             inProgress: [],
@@ -94,11 +95,17 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="home">
-                <Link to='/lessons'>to the lessons pg</Link>
-                
-                <h1 className="username">Hello, {this.state.username}!</h1>
+        <div>
+            <br/>
+            <div className="row">
+                <h1 className="sh-hello">HELLO, {this.state.username.toLocaleUpperCase()}!</h1>
+            </div>
+            <br/>
+            <br/>
+            <div className="row sh-quote-wrapper">
                 <Quote quote={this.state.quote} />
+            </div>
+            <div>
                 <h3>Week {this.state.weekNumber}</h3>
                 <div className="graphs">
                     <Progress  inProgress={this.state.inProgress} />
@@ -106,6 +113,7 @@ class Home extends Component {
                     
                 </div>
             </div>
+        </div>
         )
     }
 
