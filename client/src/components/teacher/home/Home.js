@@ -8,7 +8,7 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            quote: '"Today you are you, that is Truer than True, there is no one alive, that is youer than you" - Dr. Suess',
+            quote: '"Its not the altitude, its the attitude',
             username: "Dan",
             authorization: "student",
             inProgress: [],
@@ -81,18 +81,15 @@ class Home extends Component {
                 }
             ]
         }
-
-
     }
+
     componentWillMount() {
         this.state.lessons.forEach((lesson) => {
 
             if (lesson.completion < 100) {
                 this.setState((prevState) => { return { inProgress: prevState.inProgress.concat(lesson) } })
-
             }
         })
-
     }
 
     render() {
@@ -106,6 +103,7 @@ class Home extends Component {
                 <div className="graphs">
                     <Progress  inProgress={this.state.inProgress} />
                     <PinnedLessons  lessons={this.state.lessons}/>
+                    
                 </div>
             </div>
         )

@@ -6,10 +6,10 @@ function PinnedLessons(props) {
             <h5>Pinned Lessons</h5>
             {props.lessons.map((lesson, index) => {
                 if (lesson.pinned) {
-                    return( 
-                    <div key={index}>
-                        {lesson.Topic}
-                    </div>
+                    return (
+                        <div key={index}>
+                            {lesson.Topic}
+                        </div>
                     )
                 }
             })}
