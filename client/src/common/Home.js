@@ -10,6 +10,7 @@ class Home extends Component {
     return (
       <div>
           <h1> HELLO WORLD </h1>
+          <Route exact path="/lesson" component={Lesson} />
       </div>
     )
   }
