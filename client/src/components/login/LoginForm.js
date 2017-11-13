@@ -9,17 +9,17 @@ class LoginForm extends Component {
         return (
             <div className="loginForm">
                 <h1 className="head-login">Login</h1>
-                <form className="form-login">
+                <form className="form-login" method="post" action="http://localhost:3000/api/login">
                     <div className="form-group">
                         <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
-                        <input type="text" className="form-control" id="email" placeholder="E-Mail Address" />
+                        <input type="text" name="username" className="form-control" id="email" placeholder="E-Mail Address" />
                     </div>
                     <div className="form-group">
                         <i className="fa fa-lock fa-2x" aria-hidden="true"></i>
-                        <input type="password" className="form-control" id="password" placeholder="Password" />
+                        <input type="password" name="password" className="form-control" id="password" placeholder="Password" />
                     </div>
                     <div className="btn-submit-div">
-                    <Link to='/Home'> <button type="button" className="btn btn-info btn-submit">SUBMIT </button></Link>
+                    <button type="submit" className="btn btn-info btn-submit">SUBMIT </button>
                    
                     </div>
                     <div className="otherConnections">
