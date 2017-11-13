@@ -50,7 +50,15 @@ class Lessons extends Component {
                         "Bot",
                         "Authentication"
                     ]
-                }
+                },
+                "Amitay": {
+                    "logo": "http://url",
+                    "lessons": [
+                        "lesson1",
+                        "lesson2",
+                        "lesson3"
+                    ]
+                },
             },
             weeks:
             {
@@ -211,6 +219,18 @@ class Lessons extends Component {
                             "DayNumber": 2
                         }
                     ]
+                },
+                "Amitay": {
+                    "day1": [
+                        {
+                            "id": 2,
+                            "Topic": "lesson1",
+                            "Description": "description bla bvlbal blb",
+                            "LogoUrl": "http://url",
+                            "WeekNumber": 4,
+                            "DayNumber": 1
+                        },
+                    ]
                 }
             }
         }
@@ -224,8 +244,7 @@ class Lessons extends Component {
     }
 
     render() {
-        let weekOrTopic = () => {
-
+        let weekOrTopic = () => {     
             if (this.state.mode == true) {
                 return Object.keys(this.state.topics).map((topic, index) => (
                     <Topics key={index} topics={this.state.topics[topic].lessons} topicName={topic} />
@@ -238,17 +257,20 @@ class Lessons extends Component {
         }
 
         return (
+
             <div>
 
                 <h1>Lessons Component</h1>
                 <br />
                 <Link to="/lesson">Lesson</Link>
+                <Link to='/Home'>home is where the heart is</Link>
                 <br />
                 <button type="button" className="btn btn-info" onClick={this.renderWeeks}>SORT BY WEEKS !</button>
                 <button type="button" className="btn btn-warning" onClick={this.renderTopics}>SORT BY TOPICS !</button>
 
                 <div>
                     {weekOrTopic()}
+                    
                 </div>
 
 

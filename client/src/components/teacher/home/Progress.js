@@ -6,7 +6,7 @@ function Progress(props) {
     return (
         <div className="containers">
             <h5>Completion Rating</h5>
-            {props.inProgress.map((lesson, index) => {
+            {/* {props.inProgress.map((lesson, index) => {
                 return (
                     <div key={index}>
                         Topic:{lesson.Topic} || Day: {lesson.dayNumber}
@@ -15,8 +15,11 @@ function Progress(props) {
                         </div>
                     </div>
                 )
-                })
+                }) */}
             }
+
+
+            
         </div>
     )
 

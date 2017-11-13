@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Routes from './Routes';
 import Sidebar from './navigation/Sidebar'
+import Navbar from './navigation/Navbar'
 import {BrowserRouter} from 'react-router-dom';
 import './style.css'
 // import 'bootstrap/dist/css/bootstrap.css';
@@ -13,15 +14,14 @@ class AppWrapper extends React.Component {
     return (
       <div>
       <Sidebar/>
-      <BrowserRouter>
+      <Navbar/>
       
-     
+      <BrowserRouter>
+  
             <Routes/>
     
-       
       </BrowserRouter>
       </div>
-    
 
     );
   }
