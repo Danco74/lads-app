@@ -1,9 +1,9 @@
 var mysql=require('mysql');
 var connection=mysql.createPool({
 
-host:'localhost',
+host:'35.197.241.38',
 user:'root',
-password:'!Q@W#E4r5t6y',
+password:'sF.z6hh8',
 database:'lads'
 
 });
