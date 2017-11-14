@@ -1,12 +1,8 @@
 import React from 'react';
-import MainApp from './';
 import Page404 from './common/404';
-import Login from './components/login/Login.js'
-import Lessons from './components/student/lessons/lessons'
-import Lesson from './components/student/lesson/lesson'
-import StudentHome from './components/student/home/StudentHome'
-import TeacherHome from './components/teacher/home/TeacherHome'
-import {Switch, Route, Redirect} from 'react-router-dom';
+import Login from './common/login/Login.js';
+import Navwrapper from './common/navigation/Navwrapper';
+import { Route, Redirect } from 'react-router-dom';
 
 const axios = require('axios');
 
@@ -17,7 +13,7 @@ class Routes extends React.Component {
       isLoggedIn: "false",
       wasServerQueried: false,
       roleId: -1
-      
+
     }
 
     this.isLoggedIn = this
@@ -27,16 +23,17 @@ class Routes extends React.Component {
   }
 
   componentWillMount() {
-    
+
     var that = this;
+ 
 
     axios
       .get('http://localhost:3000/user/validate')
       .then(function (response) {
         if (response.data) {
-          that.setState({isLoggedIn: true, wasServerQueried: true, roleId: response.data.roleId});
+          that.setState({ isLoggedIn: true, wasServerQueried: true, roleId: response.data.roleId });
         } else {
-          that.setState({isLoggedIn: false, wasServerQueried: true});
+          that.setState({ isLoggedIn: false, wasServerQueried: true });
         }
 
       });
@@ -51,6 +48,7 @@ class Routes extends React.Component {
     if (this.state.wasServerQueried) {
       return (
         <div className="container">
+<<<<<<< HEAD
           <Switch>
 
             <Route
@@ -73,13 +71,29 @@ class Routes extends React.Component {
             <Route path="*" component={Page404}/>
 
           </Switch>
+=======
+  
+          <Route exact path="/"
+               render={() => (!this.isLoggedIn()
+                 ? (<Login />)
+                 : (<Redirect to="/lads" />))} />
+
+          <Route path="/lads"
+               render={(props) => (!this.isLoggedIn()
+                 ? (<Login />)
+                 : (<Navwrapper newprops={props}/>))} /> 
+
+   
+          <Route path="*" component={Page404} />
+
+>>>>>>> 28ed4d6d6ad9b0e899a739660729ab5aebffff80
         </div>
       );
     }
     else {
       return (
-        <div className="container">
-          </div>
+        <div>
+        </div>
       )
     }
   }

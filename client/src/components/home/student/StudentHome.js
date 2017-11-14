@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Progress from "./Progress";
-import Quote from "./Quote";
+import Quote from "../common/Quote";
 import PinnedLessons from "./Pinned";
 import './studentHome.css';
 
