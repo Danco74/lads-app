@@ -10,13 +10,12 @@ class Lesson extends Component {
         super(props)
         this.state = {
             status: {
-                // elementAdding: false,
-                // currentButton: '',
+                editing: false,
                 currentSection: undefined,
                 currentContent: undefined
             },
 
-            title: "Lesson Title",
+            title: "",
             sections: [
             //     {
             //         header: "INTRO",
@@ -149,6 +148,7 @@ class Lesson extends Component {
         this.changeContentType = this.changeContentType.bind(this);
         this.removeSelected = this.removeSelected.bind(this);
         this.repositionSelected = this.repositionSelected.bind(this);
+        this._handleKeyPress = this._handleKeyPress.bind(this);
     }
 
     addSection() {
@@ -175,9 +175,8 @@ class Lesson extends Component {
             return;
         }
         let newContent = {
-            editable: false,
-            type: "paragraph",
-            text: "Sample Content"
+            contentType: "paragraph",
+            contentText: "Sample Content"
         }
         this.setState((prevState) => {
             return {
@@ -185,7 +184,7 @@ class Lesson extends Component {
                 prevState.sections[this.state.status.currentSection].contents.splice(this.state.status.currentContent + 1, 0, newContent)
             }
         });
-        this.setState((prevState) => { return { [prevState.status.currentContent]: prevState.status.currentContent += 1 } });
+        this.setState((prevState) => { return { [prevState.status.currentContent]: (prevState.status.currentContent === undefined ? prevState.status.currentContent = 0 : prevState.status.currentContent += 1) } });
     }
 
     removeSelected() {
@@ -217,22 +216,34 @@ class Lesson extends Component {
         this.setState((prevState) => {
             return {
             [prevState.sections[this.state.status.currentSection]]:
-                prevState.sections[this.state.status.currentSection].contents[this.state.status.currentContent].type = newType
+                prevState.sections[this.state.status.currentSection].contents[this.state.status.currentContent].contentType = newType
             }
         });
     }
 
     editContent(newText, sectionIndex, contentIndex) {
         if (contentIndex >= 0) {
-            this.setState((prevState) => { return { [prevState.sections[sectionIndex]]: prevState.sections[sectionIndex].contents[contentIndex].text = newText } })
+            this.setState((prevState) => { return { [prevState.sections[sectionIndex]]: prevState.sections[sectionIndex].contents[contentIndex].contentText = newText } })
         }
         else if (sectionIndex >= 0) {
             this.setState((prevState) => { return { [prevState.sections[sectionIndex]]: prevState.sections[sectionIndex].header = newText } })
+        }
+        else {
+            this.setState((prevState) => { return { [prevState.title]: prevState.title = newText } })            
         }
         this.toggleEditing(sectionIndex, contentIndex);
     }
 
     selectHighlight(sectionIndex, contentIndex) {
+        if(this.state.status.editing) {
+            return;
+        }
+        if(sectionIndex < 0) {
+            sectionIndex = undefined;
+        }
+        if(contentIndex < 0) {
+            contentIndex = undefined;
+        }
         this.setState((prevState) => { return { [prevState.status.currentSection]: prevState.status.currentSection = sectionIndex } });
         this.setState((prevState) => { return { [prevState.status.currentContent]: prevState.status.currentContent = contentIndex } });
     }
@@ -277,14 +288,16 @@ class Lesson extends Component {
     }
 
     toggleEditing(sectionIndex, contentIndex) {
-        if (contentIndex >= 0) {
-            let contentEditable = this.state.sections[sectionIndex].contents[contentIndex].editable;
-            this.setState((prevState) => { return { [prevState.sections[sectionIndex]]: prevState.sections[sectionIndex].contents[contentIndex].editable = !contentEditable } })
-        }
-        else if (sectionIndex >= 0) {
-            let sectionEditable = this.state.sections[sectionIndex].headerEditable;
-            this.setState((prevState) => { return { [prevState.sections[sectionIndex]]: prevState.sections[sectionIndex].headerEditable = !sectionEditable } })
-        }
+        // if (contentIndex >= 0) {
+        //     let contentEditable = this.state.sections[sectionIndex].contents[contentIndex].editable;
+        //     this.setState((prevState) => { return { [prevState.sections[sectionIndex]]: prevState.sections[sectionIndex].contents[contentIndex].editable = !contentEditable } })
+        // }
+        // else if (sectionIndex >= 0) {
+        //     let sectionEditable = this.state.sections[sectionIndex].headerEditable;
+        //     this.setState((prevState) => { return { [prevState.sections[sectionIndex]]: prevState.sections[sectionIndex].headerEditable = !sectionEditable } })
+        // }
+        this.setState({[this.state.status.editing]: this.state.status.editing = !this.state.status.editing});
+        console.log(this.state.status.editing);
     }
 
     // toggleElementAdding(buttonLabel) {
@@ -295,6 +308,10 @@ class Lesson extends Component {
     // }
 
     componentWillMount() {
+        document.addEventListener("keydown", this._handleKeyPress, false);
+    }
+
+    componentDidMount() {
         //reeive db stuff
         var url = 'http://localhost:3000/api/lessons/1'
         
@@ -303,13 +320,89 @@ class Lesson extends Component {
             //Use the response here to update
             response.data.status = {currentSection: undefined, currentContent: undefined, editable: false};
             this.setState(response.data);
+            console.log(this.state)
         })
         .catch(error => {
             console.log('Error fetching and parsing data', error);
         });
     }
 
-    componentDidMount() {
+    componentWillUnmount() {
+        document.removeEventListener("keydown", this._handleKeyPress, false);
+    }
+
+    _handleKeyPress(event) {
+        console.log(event);
+        if(this.state.status.editing) {
+            return;
+        }
+        else if(event.altKey) {
+            if(event.code === 'Enter') {
+                //this.toggleEditing(this.state.status.currentSection, this.state.status.currentContent);
+            }
+            else if(event.code === 'ArrowUp') {
+                this.repositionSelected('up');
+            }
+            else if(event.code === 'ArrowDown') {
+                this.repositionSelected('down');
+            }
+        }
+        else if(!event.altKey) {
+            if(event.code === 'ArrowUp') {
+                if(this.state.status.currentSection === undefined) {
+                    return;
+                }
+                else if(this.state.status.currentContent === undefined && this.state.status.currentSection === 0) {
+                    this.selectHighlight();
+                }
+                else if(this.state.status.currentContent === undefined) {
+                    let prevSectionIndex = this.state.status.currentSection - 1;
+                    let prevContentIndex = (this.state.sections[prevSectionIndex].contents.length === 0 ? undefined : this.state.sections[prevSectionIndex].contents.length - 1);
+                    this.selectHighlight(prevSectionIndex, prevContentIndex);
+                }
+                else {
+                    this.selectHighlight(this.state.status.currentSection, this.state.status.currentContent - 1);
+                }
+            }
+            else if(event.code === 'ArrowDown') {
+                // no sections
+                if(this.state.sections.length === 0) {
+                    return;
+                }
+                // at title
+                else if(this.state.status.currentSection === undefined) {
+                    this.selectHighlight(0);
+                }
+                // check if next content exists when at header
+                else if(this.state.status.currentContent === undefined && this.state.sections[this.state.status.currentSection].contents.length > 0) {
+                    this.selectHighlight(this.state.status.currentSection, 0);
+                }
+                // check if next section exists when at header
+                else if(this.state.status.currentContent === undefined && this.state.status.currentSection < this.state.sections.length -1) {
+                    this.selectHighlight(this.state.status.currentSection +1);
+                }
+                // check if next content exists
+                else if(this.state.status.currentContent < this.state.sections[this.state.status.currentSection].contents.length -1) {
+                    this.selectHighlight(this.state.status.currentSection, this.state.status.currentContent + 1);
+                }
+                // check if next section exists
+                else if(this.state.status.currentSection < this.state.sections.length -1) {
+                    this.selectHighlight(this.state.status.currentSection + 1, undefined)
+                }
+            }
+            console.log(this.state.status)
+        }
+    }
+
+    title() {
+        if(this.state.status.currentSection === undefined && this.state.status.currentContent === undefined && this.state.status.editing === true) {
+            return <Form text={this.state.title} editContent={this.editContent} sectionIndex={undefined} contentIndex={undefined} />            
+        }
+        return <div className={`lesson-title ${this.state.status.currentSection === undefined && this.state.status.currentContent === undefined ? 'selected' : ''}`}>
+                    <h1 onClick={()=>this.selectHighlight(undefined, undefined)} onDoubleClick={()=>this.toggleEditing(undefined, undefined)}>
+                        {this.state.title || '???'}
+                    </h1>
+                </div>
     }
 
     render() {
@@ -323,7 +416,7 @@ class Lesson extends Component {
         // let form = (this.state.status.elementAdding ? formHtml : '');
         return (
             <div className="lesson-container">
-                <h1>{this.state.title}</h1>
+                {this.title()}
                 <Link to='/lessons'>Back To Lessons</Link>
                 {displaySections}
 

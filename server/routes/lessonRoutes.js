@@ -74,9 +74,9 @@ router.get('/:id', function (req, res) {
     
                 var content = {
                     contentId: rows[i].contentId,
-                    type: rows[i].contentType,
+                    contentType: rows[i].contentType,
                     contentViewIndex: rows[i].contentViewIndex,
-                    text: rows[i].contentText
+                    contentText: rows[i].contentText
                 }
     
                 sections[getSectionIndex(rows[i].sectionId)]
