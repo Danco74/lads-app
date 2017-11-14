@@ -5,6 +5,7 @@ import Login from './components/login/Login.js'
 import Lessons from './components/student/lessons/lessons'
 import Lesson from './components/student/lesson/lesson'
 import StudentHome from './components/student/home/StudentHome'
+import TeacherHome from './components/teacher/home/TeacherHome'
 import {Switch, Route, Redirect} from 'react-router-dom';
 
 const axios = require('axios');
@@ -66,7 +67,7 @@ class Routes extends React.Component {
               ? (<Redirect to="/login"/>)
               : (<Lessons/>))}/>
 
-              <Route exact path="/home" component={StudentHome}/>
+              <Route exact path="/home" component={TeacherHome}/>
             <Route exact path="/lesson" component={Lesson}/>
             <Route exact path="/login" component={Login}/>
             <Route path="*" component={Page404}/>

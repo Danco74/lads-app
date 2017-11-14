@@ -4,8 +4,8 @@ const SectionHelper = require('../db/helpers/SectionSqlHelper.js');
 const ContentHelper = require('../db/helpers/ContentSqlHelper.js');
 const router = express.Router();
 
-// #LESSONS ROUTES #------------------------------------------------------- Add a
-// new lesson
+// #LESSONS ROUTES #------------------------------------------------------- Add
+// a new lesson
 router.post('/', function (req, res) {
     LessonHelper
         .addLesson(req.body, function (err, rows) {
@@ -32,77 +32,75 @@ router.get('/', function (req, res) {
 // get lesson by id
 router.get('/:id', function (req, res) {
     LessonHelper
-    .getLessonById(req.params.id, function (err, rows) {
-    
-        if (err) {
-            res.send(err);
-        }
-        else if (!rows) {
-            res.send("Empty results");
-        }
-        else {
-            var getSectionIndex = function (id) {
-                for (let i = 0; i < sections.length; i++) {
-                    if (sections[i].sectionId == id) {
-                        return i;
-                    } else {
-                        return -1;
+        .getLessonById(req.params.id, function (err, rows) {
+
+            if (err) {
+                res.send(err);
+            } else if (!rows) {
+                res.send("Empty results");
+            } else {
+                var getSectionIndex = function (id) {
+                    for (let i = 0; i < sections.length; i++) {
+                        if (sections[i].sectionId == id) {
+                            return i;
+                        } else {
+                            return -1;
+                        }
+                    }
+                };
+
+                var lesson = {};
+
+                lesson.title = rows[0].title;
+
+                var sections = [];
+
+                for (let i = 0; i < rows.length; i++) {
+                    var section = {
+                        sectionId: rows[i].sectionId,
+                        sectionHeader: rows[i].sectionHeader,
+                        sectionViewIndex: rows[i].sectionViewIndex,
+                        content: []
+                    }
+
+                    if (getSectionIndex(rows[i].sectionId) != -1) {
+                        sections.push(section)
                     }
                 }
-            };
-    
-            var lesson = {};
 
-            lesson.title = rows[0].title;
-    
-            var sections = [];
-    
-            for (let i = 0; i < rows.length; i++) {
-                var section = {
-                    sectionId: rows[i].sectionId,
-                    sectionHeader: rows[i].sectionHeader,
-                    sectionViewIndex: rows[i].sectionViewIndex,
-                    content: []
+                for (let i = 0; i < rows.length; i++) {
+
+                    var content = {
+                        contentId: rows[i].contentId,
+                        contentType: rows[i].contentType,
+                        contentViewIndex: rows[i].contentViewIndex,
+                        contentText: rows[i].contentText
+                    }
+
+                    sections[getSectionIndex(rows[i].sectionId)]
+                        .content
+                        .push(content);
                 }
-    
-                if (getSectionIndex(rows[i].sectionId) != -1) {
-                    sections.push(section)
-                }
+
+                lesson.sections = sections;
+
+                res.send(lesson);
             }
-    
-            for (let i = 0; i < rows.length; i++) {
-    
-                var content = {
-                    contentId: rows[i].contentId,
-                    contentType: rows[i].contentType,
-                    contentViewIndex: rows[i].contentViewIndex,
-                    contentText: rows[i].contentText
-                }
-    
-                sections[getSectionIndex(rows[i].sectionId)]
-                    .content
-                    .push(content);
-            }
-    
-            lesson.sections = sections;
-    
-            res.send(lesson);
-        }
-    
-    });
+
+        });
 })
 //get lesson by week number
 router.get('/:weekNumber', function (req, res) {
     LessonHelper
-    .getLessonById(req.params.id, function (err, rows) {
-        if (err) {
-            res.send(err);
-        } else {
-            res.send(rows);
-        }
+        .getLessonById(req.params.id, function (err, rows) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(rows);
+            }
 
-    });
-  
+        });
+
 })
 
 //get all lesson gathered by week with sorted days
@@ -127,11 +125,38 @@ router.get('/sorted/byweeks', function (req, res) {
                     weeks[rows[i].WeekNumber][rows[i].DayNumber].push(rows[i]);
                 }
 
-                // for (var key in weeks){     weeks[key].sort(function(a, b){
-                // if(a.DayNumber < b.DayNumber) return -1;         if(a.DayNumber >
-                // b.DayNumber) return 1;         return 0;     }); }
+                // for (var key in weeks){     weeks[key].sort(function(a, b){ if(a.DayNumber <
+                // b.DayNumber) return -1;         if(a.DayNumber > b.DayNumber) return 1;
+                //   return 0;     }); }
 
                 res.send(weeks);
+            }
+
+        });
+})
+
+router.get('/sorted/bytopic', function (req, res) {
+
+    LessonHelper
+        .getAllLessons(function (err, rows) {
+            if (err) {
+                res.send(err);
+            } else {
+
+                let topics = {};
+                for (let i = 0; i < rows.length; i++) {
+                    if (!topics[rows[i].Topic]) {
+                        topics[rows[i].Topic] = {
+                            lessons: []
+                        };
+                    }
+
+                    topics[rows[i].Topic]
+                        .lessons
+                        .push(rows[i]);
+                }
+
+                res.send(topics);
             }
 
         });
