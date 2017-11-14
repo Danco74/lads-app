@@ -3,12 +3,15 @@ import { Route, Link } from 'react-router-dom'
 import Lesson from '../lesson/lesson'
 import Week from './week.js'
 import Topics from './topics.js'
+import CreateLesson from './create-lesson.js'
 
 class Lessons extends Component {
     constructor(props) {
         super(props)
         this.renderTopics = this.renderTopics.bind(this);
         this.renderWeeks = this.renderWeeks.bind(this);
+        this.addLesson = this.addLesson.bind(this);
+
         this.state = {
             mode: "",
             topics:
@@ -88,7 +91,7 @@ class Lessons extends Component {
                     "day2": [
                         {
                             "id": 5,
-                            "Topic": "js",
+                            "Topic": "amitay topic",
                             "Description": "NOT",
                             "LogoUrl": "http://url",
                             "WeekNumber": 1,
@@ -219,21 +222,21 @@ class Lessons extends Component {
                             "DayNumber": 2
                         }
                     ]
-                },
-                "Amitay": {
-                    "day1": [
-                        {
-                            "id": 2,
-                            "Topic": "lesson1",
-                            "Description": "description bla bvlbal blb",
-                            "LogoUrl": "http://url",
-                            "WeekNumber": 4,
-                            "DayNumber": 1
-                        },
-                    ]
                 }
             }
         }
+    }
+
+    addLesson(lesson) {
+
+        console.log(lesson.lessonTopic)
+        // console.log(this.state.weeks[`week${lesson.lessonWeek}`][`day${lesson.lessonDay}`])
+        // console.log(daysInWeek)
+        let newWeeks = Object.assign({}, this.state.weeks);
+        newWeeks[`week${lesson.WeekNumber}`][`day${lesson.DayNumber}`].push(lesson);
+        this.setState({ weeks: newWeeks });
+
+        console.log(this.state)
     }
 
     renderTopics() {
@@ -244,7 +247,7 @@ class Lessons extends Component {
     }
 
     render() {
-        let weekOrTopic = () => {     
+        let weekOrTopic = () => {
             if (this.state.mode == true) {
                 return Object.keys(this.state.topics).map((topic, index) => (
                     <Topics key={index} topics={this.state.topics[topic].lessons} topicName={topic} />
@@ -255,25 +258,25 @@ class Lessons extends Component {
                 ))
             }
         }
-
         return (
 
             <div>
-
                 <h1>Lessons Component</h1>
                 <br />
+<<<<<<< HEAD:client/src/components/lessons/lessons.js
                 <Link to="/LADS/lesson">Lesson</Link>
                 <Link to='/LADS/Home'>home is where the heart is</Link>
+=======
+                <Link to="/lesson">Lesson</Link>
+                <Link to='/Home'>home is where the heart is</Link>
+                <CreateLesson addLesson={this.addLesson} />
+>>>>>>> master:client/src/components/teacher/lessons/lessons.js
                 <br />
                 <button type="button" className="btn btn-info" onClick={this.renderWeeks}>SORT BY WEEKS !</button>
                 <button type="button" className="btn btn-warning" onClick={this.renderTopics}>SORT BY TOPICS !</button>
-
                 <div>
                     {weekOrTopic()}
-                    
                 </div>
-
-
             </div>
         )
     }

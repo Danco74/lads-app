@@ -14,10 +14,14 @@ var LessonSqlHelper = {
         return db.query("Select * from lessons", callback);
     },
     //Get lessons by id
-    getLessonById: function (id, callback) {
+    // getLessonById: function (id, callback) {
 
-        return db.query("select * from lessons where Id=?", [id], callback);
+    //     return db.query("select * from lessons where Id=?", [id], callback);
+    // },
+    getLessonById: function (id, callback) {  
+         return db.query("select lessons.id as lessonId,lessons.Topic as topic,lessons.Title as title,lessons.LogoUrl as logoUrl,lessons.WeekNumber as weekNumber,lessons.DayNumber as dayNumber,sections.id as sectionId,sections.Header sectionHeader,sections.ViewIndex as sectionViewIndex,content.id as contentId,content.Type as contentType,content.ViewIndex as contentViewIndex, content.text as contentText from lessons INNER JOIN sections ON sections.LessonId=lessons.id INNER JOIN content ON content.SectionId=sections.id", [id], callback);
     },
+
     //Get lessons by week
     getLessonsByWeek: function (weekNumber, callback) {
 
