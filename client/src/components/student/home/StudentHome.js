@@ -14,70 +14,41 @@ class Home extends Component {
             authorization: "student",
             inProgress: [],
             weekNumber: 2,
-            lessons: [
+            lessonsInProgress: [
                 {
+                    id: 1,
                     Topic: "react",
                     completion: 10,
                     comfort_rating: 1,
                     dayNumber: 1,
+                    weekNumber: 1,
                     pinned:true
                 },
                 {
+                    id: 2,
                     Topic: "angular",
                     completion: 20,
                     comfort_rating: 4,
                     dayNumber: 1,
+                    weekNumber: 1,
                     pinned:true
                 },
                 {
+                    id:3,
                     Topic: "jquery",
                     completion: 30,
                     comfort_rating: 5,
                     dayNumber: 2,
+                    weekNumber: 2,
                     pinned:false
                 },
                 {
+                    id: 4,
                     Topic: "CSS",
                     completion: 40,
                     comfort_rating: 3,
                     dayNumber: 2,
-                    pinned:true
-                },
-                {
-                    Topic: "Bootstrap",
-                    completion: 50,
-                    comfort_rating: 2,
-                    dayNumber: 5,
-                    pinned:false
-                },
-                {
-                    Topic: "Handlebars",
-                    completion: 60,
-                    comfort_rating: 4,
-                    dayNumber: 4,
-                    pinned:true
-                },
-                {
-                    Topic: "SQL",
-                    completion: 70,
-                    comfort_rating: 4,
-                    dayNumber: 3,
-                    pinned:false
-                }
-                ,
-                {
-                    Topic: "DOM",
-                    completion: 80,
-                    comfort_rating: 4,
-                    dayNumber: 3,
-                    pinned:true
-                }
-                ,
-                {
-                    Topic: "HTML",
-                    completion: 90,
-                    comfort_rating: 4,
-                    dayNumber: 2,
+                    weekNumber: 3,
                     pinned:true
                 }
             ]
@@ -85,17 +56,20 @@ class Home extends Component {
     }
 
     componentWillMount() {
-        this.state.lessons.forEach((lesson) => {
 
-            if (lesson.completion < 100) {
-                this.setState((prevState) => { return { inProgress: prevState.inProgress.concat(lesson) } })
-            }
-        })
+
+
+        // this.state.lessons.forEach((lesson) => {
+
+        //     if (lesson.completion < 100) {
+        //         this.setState((prevState) => { return { inProgress: prevState.inProgress.concat(lesson) } })
+        //     }
+        // })
     }
 
     render() {
         return (
-        <div>
+        <div className="sh-wrapper">
             <br/>
             <div className="row">
                 <h1 className="sh-hello">HELLO, {this.state.username.toLocaleUpperCase()}!</h1>
@@ -105,14 +79,16 @@ class Home extends Component {
             <div className="row sh-quote-wrapper">
                 <Quote quote={this.state.quote} />
             </div>
-            <div>
-                <h3>Week {this.state.weekNumber}</h3>
-                <div className="graphs">
-                    <Progress  inProgress={this.state.inProgress} />
-                    <PinnedLessons  lessons={this.state.lessons}/>
-                    
-                </div>
+           
+       
+            <div className = "row sh-progress-header">
+                LESSONS IN PROGRESS
             </div>
+
+            <div className="row">
+                <Progress  inProgress={this.state.lessonsInProgress} />
+            </div>
+
         </div>
         )
     }
