@@ -1,7 +1,7 @@
 import React from 'react';
 import Page404 from './common/404';
 import Login from './common/login/Login.js'
-import Lessons from './components/lessons/lessons'
+import Lessons from './components/student/lessons/lessons'
 import Navwrapper from './common/navigation/Navwrapper'
 import { Switch, Route, Redirect } from 'react-router-dom';
 

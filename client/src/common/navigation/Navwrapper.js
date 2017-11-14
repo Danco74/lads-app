@@ -3,8 +3,8 @@ import { Switch, Route, LinkProps, Link } from 'react-router-dom'
 import Navbar from './Navbar'
 
 import Sidebar from './Sidebar'
-import Home from '../../components/home/Home'
-import Lessons from '../../components/lessons/lessons'
+import Home from '../../components/student/home/StudentHome'
+import Lessons from '../../components/student/lessons/lessons'
 
 class Navwrapper extends Component {
 
