@@ -262,8 +262,8 @@ class Lessons extends Component {
 
                 <h1>Lessons Component</h1>
                 <br />
-                <Link to="/lesson">Lesson</Link>
-                <Link to='/Home'>home is where the heart is</Link>
+                <Link to="/LADS/lesson">Lesson</Link>
+                <Link to='/LADS/Home'>home is where the heart is</Link>
                 <br />
                 <button type="button" className="btn btn-info" onClick={this.renderWeeks}>SORT BY WEEKS !</button>
                 <button type="button" className="btn btn-warning" onClick={this.renderTopics}>SORT BY TOPICS !</button>

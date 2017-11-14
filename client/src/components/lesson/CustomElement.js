@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '../style.css'
-import Form from './toolbox/form/Form'
+// import '../style.css'
+import Form from '../toolbox/form/Form'
 
 //const Code = (props) => (<code className={props.type}>Type:Code ||Text: {props.text}</code>)
 

@@ -95,7 +95,7 @@ class Home extends Component {
     render() {
         return (
             <div className="home">
-                <Link to='/lessons'>to the lessons pg</Link>
+                <Link to='/LADS/lessons'>to the lessons pg</Link>
                 
                 <h1 className="username">Hello, {this.state.username}!</h1>
                 <Quote quote={this.state.quote} />
