@@ -1,0 +1,25 @@
+.pg-block-wrapper {
+    text-align: left;
+    display: flex;
+}
+
+.pg-block {
+    
+    border-style: solid;
+    /* border-width: thin; */
+    border-color: gray;
+    border-radius: 10%;
+    width: 20%;
+    /* height: 100px; */
+    margin: 1%;
+    padding: 1%;
+    display: inline-block;
+    text-align: center;
+    font-size: 25px;
+}
+
+.pg-completion {
+    font-weight: bold;
+    color:#5CBDDE;
+    font-size: 50px;
+}
