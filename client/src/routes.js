@@ -67,7 +67,7 @@ class Routes extends React.Component {
               ? (<Redirect to="/login"/>)
               : (<Lessons/>))}/>
 
-              <Route exact path="/home" component={TeacherHome}/>
+              <Route exact path="/home" component={StudentHome}/>
             <Route exact path="/lesson" component={Lesson}/>
             <Route exact path="/login" component={Login}/>
             <Route path="*" component={Page404}/>
