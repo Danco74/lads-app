@@ -25,17 +25,17 @@ class Week extends Component {
 
         return (
             <div className="row weeksList">
-                <div className="col-xs-offset-1 col-xs-10">
-                    <h1 className="weekLessons weeksHead">{this.props.weekNumber}</h1>
+                {/* <div className="col-xs-offset-1 col-xs-10"> */}
+                    <h1 className="weekLessons weeksHead">WEEK {this.props.weekNumber}</h1>
 
                     <div className="weekLessons btn-lessons">{this.state.showPlus &&
-                        <a onClick={this.onClick} href='#'><i className="fa fa-plus fa-3x"></i></a>}</div>
+                        <a onClick={this.onClick}><i className="fa fa-plus fa-3x"></i></a>}</div>
 
                     <div className="weekLessons btn-lessons">{this.state.showMinus &&
-                        <a onClick={this.onClick} href='#'><i className="fa fa-minus fa-3x"></i></a>}</div>
+                        <a onClick={this.onClick}><i className="fa fa-minus fa-3x"></i></a>}</div>
 
                     <div>{this.state.showDays && days}</div>
-                </div>
+                {/* </div> */}
             </div>
         );
     };

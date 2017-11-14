@@ -87,7 +87,7 @@ app.post('/api/login', function(req, res, next) {
 
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '/server/static/index.html'));
+  res.send(path.join(__dirname, '/server/static/index.html'));
 });
 
 
