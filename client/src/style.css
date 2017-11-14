@@ -242,14 +242,12 @@ hr{
       
 
   }
-<<<<<<< HEAD
   .container{
       margin:0;
       padding:0;
       width:100%
   }
   
-=======
   /* CREATE NEW LESSON CSS */
   .createLessonBox{
         background-size: cover;
@@ -270,4 +268,3 @@ hr{
     opacity: 1;
     
 } 
->>>>>>> master
