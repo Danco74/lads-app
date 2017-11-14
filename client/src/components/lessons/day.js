@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
+import "./day.css"
 //import Lesson from './lesson.js'
 
 class Day extends Component {
@@ -16,11 +17,11 @@ class Day extends Component {
         return (
 
 
-            <div className="col-xs-2">
-                <div className="daysList">
-                    <h3 className="daysHead">{this.props.day}</h3>
+            
+                <div className="day-wrapper">
+                    <div className="day-header">DAY {this.props.day}</div>
                     <br />
-                    <div className="daysTopics">
+                    <div className="day-topic">
                         {this.props.days.map((day, index) =>
                             <div key={index}>
                                 <a href="#" className="weekTopic">
@@ -30,7 +31,7 @@ class Day extends Component {
                             </div>)}
                     </div>
                 </div>
-            </div>
+            
 
 
 

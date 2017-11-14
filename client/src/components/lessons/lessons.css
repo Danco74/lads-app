@@ -1,0 +1,22 @@
+.btn-sort-weeks {
+    
+}
+
+.btn-sort-topics {
+
+}
+
+.btn-sort-weeks-wrapper {
+    text-align: right;
+    
+}
+
+.btn-sort-topics-wrapper {
+    text-align: left;
+    display: flex;
+    
+}
+
+.btn-wrapper {
+    margin-top: 80px;
+}

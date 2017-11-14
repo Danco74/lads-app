@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Day from './day.js'
+import './week.css'
 
 
 class Week extends Component {
@@ -24,19 +25,19 @@ class Week extends Component {
             <Day key={index}  day={days} days={this.props.week[days]} />))
 
         return (
-            <div className="row weeksList">
-                {/* <div className="col-xs-offset-1 col-xs-10"> */}
-                    <h1 className="weekLessons weeksHead">WEEK {this.props.weekNumber}</h1>
+            
+                <div>
+                    <h1 className="weekLessons weeksHead">WEEK-{this.props.weekNumber}</h1>
 
                     <div className="weekLessons btn-lessons">{this.state.showPlus &&
-                        <a onClick={this.onClick}><i className="fa fa-plus fa-3x"></i></a>}</div>
+                        <a onClick={this.onClick}><i className="fa fa-plus fa-3x week-plus"></i></a>}</div>
 
                     <div className="weekLessons btn-lessons">{this.state.showMinus &&
-                        <a onClick={this.onClick}><i className="fa fa-minus fa-3x"></i></a>}</div>
+                        <a onClick={this.onClick}><i className="fa fa-minus fa-3x week-minus"></i></a>}</div>
 
                     <div>{this.state.showDays && days}</div>
-                {/* </div> */}
-            </div>
+                </div>
+            
         );
     };
 };

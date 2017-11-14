@@ -4,6 +4,7 @@ import Lesson from '../lesson/lesson'
 import Week from './week.js'
 import Topics from './topics.js'
 import CreateLesson from './create-lesson.js'
+import './lessons.css'
 import axios from 'axios'
 
 class Lessons extends Component {
@@ -32,6 +33,15 @@ class Lessons extends Component {
           }
   
         });
+
+        axios
+        .get('http://localhost:3000/api/lessons/sorted/bytopic')
+        .then(function (response) {
+          if (response.data) {
+            that.setState({topics:response.data});
+          }
+  
+        });
     }
 
     addLesson(lesson) {
@@ -53,7 +63,7 @@ class Lessons extends Component {
         let weekOrTopic = () => {
             if (this.state.mode == true) {
                 return Object.keys(this.state.topics).map((topic, index) => (
-                    <Topics key={index} topics={this.state.topics[topic].lessons} topicName={topic} />
+                    <Topics key={index} lessons={this.state.topics[topic].lessons} topicName={topic} />
                 ))
             } else {
                 return Object.keys(this.state.weeks).map((week, index) => (
@@ -63,18 +73,27 @@ class Lessons extends Component {
         }
         return (
 
-            <div>
-                <h1>Lessons Component</h1>
-                <br />
-                <Link to="/lesson">Lesson</Link>
-                <Link to='/Home'>home is where the heart is</Link>
+            <div className="col-xs-offset-1">
+                {/* <h1>LESSONS</h1> */}
+                {/* <br />
                 <CreateLesson addLesson={this.addLesson} />
-                <br />
-                <button type="button" className="btn btn-info" onClick={this.renderWeeks}>SORT BY WEEKS !</button>
-                <button type="button" className="btn btn-warning" onClick={this.renderTopics}>SORT BY TOPICS !</button>
-                <div>
+                <br /> */}
+                <div className = "btn-wrapper">
+                    <div className="col-xs-6 btn-sort-weeks-wrapper">
+                        <button type="button" className="btn btn-info btn-sort-weeks" onClick={this.renderWeeks}>SORT BY WEEKS !</button>
+                    </div>
+                    <div className="col-xs-6 btn-sort-stopics-wrapper">
+                        <button type="button" className="btn btn-info btn-sort-topics" onClick={this.renderTopics}>SORT BY TOPICS !</button>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+ 
+                <div className = "row week-topic-wrapper">
                     {weekOrTopic()}
                 </div>
+                
             </div>
         )
     }
