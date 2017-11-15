@@ -12,14 +12,6 @@ class CreateLesson extends Component {
             LogoUrl: "",
             WeekNumber: "",
             DayNumber: ""
-
-            // "week": {
-            //     "day": [
-            //         {
-            //             "Topic": ""
-            //         }
-            //     ]
-            // }
         }
 
         this.clickForm = this.clickForm.bind(this)
@@ -33,9 +25,6 @@ class CreateLesson extends Component {
 
     lessonVal(e) {
         this.setState({ [e.target.id]: e.target.value });
-
-        // console.log(this.state)
-        //   console.log(this.state)
     }
 
     lessonToWeeks() {
@@ -49,16 +38,36 @@ class CreateLesson extends Component {
 
     render() {
         return (
-            <div>
+            <div className="createLessonForm">
                 <button onClick={this.clickForm} type="button" className="btn btn-danger btn-lg">Create new Lesson</button>
-
                 {this.state.showForm &&
-                <div className="form-group createLessonBox">
-                    <input onChange={this.lessonVal} type="text" className="form-control" id="Topic" placeholder="Topic" />
-                    <input onChange={this.lessonVal} type="number" className="form-control" id="WeekNumber" placeholder="week" />
-                    <input onChange={this.lessonVal} type="number" className="form-control" id="DayNumber" placeholder="day" />
-                    <button onClick={this.lessonToWeeks} type="button" className="btn btn-info btn-lg form-control">ADD</button>
-                </div>}
+                    <div className="form-group createLessonBox">
+                        <input onChange={this.lessonVal} type="text" className="form-control" id="Topic" placeholder="Topic" />
+                        <select onChange={this.lessonVal} className="form-control" id="WeekNumber">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                        </select>
+
+                        <select onChange={this.lessonVal} className="form-control" id="DayNumber">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+
+                        <button onClick={this.lessonToWeeks} type="button" className="btn btn-success">ADD</button>
+                    </div>}
 
             </div>
         );
