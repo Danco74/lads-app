@@ -3,6 +3,7 @@ import Page404 from './common/404';
 import Login from './common/login/Login.js';
 import Navwrapper from './common/navigation/Navwrapper';
 import { HashRouter, Router,Route, Redirect } from 'react-router-dom';
+import Lesson from './components/lesson/lesson.js'
 
 const axios = require('axios');
 
@@ -66,6 +67,17 @@ class Routes extends React.Component {
                render={(props) => (!this.isLoggedIn()
                  ? (<Login />)
                  : (<Navwrapper newprops={props}/>))} /> 
+
+   
+        
+      </HashRouter>
+
+      <HashRouter>
+     
+          <Route path="/lesson"
+               render={(props) => (!this.isLoggedIn()
+                 ? (<Login />)
+                 : (<Lesson />))} /> 
 
    
         
