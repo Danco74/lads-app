@@ -7,3 +7,14 @@
     color: #5CBDDE !important;
     margin-left: 10px !important;
 }
+.weekLessons{
+    margin: 30px 0;
+}
+
+.weeksHead{
+    display:inline-block;
+    width: 20%;
+}
+.btn-lessons{
+    display:inline-block;
+}

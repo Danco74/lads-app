@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import CustomElement from './CustomElement'
-import Form from './toolbox/form/Form'
+import CustomElement from './CustomElement';
+import Form from './toolbox/form/Form';
+import './section.css'
 
 class Section extends Component {
 

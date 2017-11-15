@@ -26,10 +26,10 @@ class Navwrapper extends Component {
         const RouteName = ({ match }) => {
             switch (match.params.routeName) {
                 case 'home':
-                    if (this.state.authorization === 1) {
+                    if (this.state.authorization === 0) {
                         return <StudentHome />
                     }
-                    else if (this.state.authorization === 0) {
+                    else if (this.state.authorization === 1) {
                         return <TeacherHome />
                     }
                 case 'lessons':

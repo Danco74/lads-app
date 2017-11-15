@@ -1,6 +1,11 @@
-.day-wrapper {
+.pn-wrapper{
+    text-align: left;
+    display: flex;
+}
+/* #21B49A */
+.pn-block {
     border-style: solid;
-    border-color: #ff767a;
+    border-color:  #ff767a;
     border-radius: 12%;
     width: 20%;
     margin: 1%;
@@ -8,5 +13,9 @@
     display: inline-block;
     text-align: center;
     font-size: 20px;
+}
 
+.pn-logo{
+    width:70%;
+    height:50%;
 }
