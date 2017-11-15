@@ -4,7 +4,7 @@ var ContentSqlHelper = {
     //Add content
     addContent: function (lessonId, sectionId, content, callback) {
         return db.query("Insert into content set Type=?,LessonId=?,SectionId=?,ViewIndex=?,Text=?", [
-            content.Type, lessonId, sectionId, content.ViewIndex, content.text
+            content.type, lessonId, sectionId, content.viewIndex, content.text
         ], callback);
     },
     //Get all contents

@@ -34,8 +34,8 @@ class Navwrapper extends Component {
                 }
                 case 'lessons':
                     return <Lessons user={this.state.user}/>
-                case 'lesson':
-                    return <Lesson user={this.state.user}/>
+                // case 'lesson':
+                //     return <Lesson id={match.params} user={this.state.user}/>
             }
         }
 
@@ -52,7 +52,8 @@ class Navwrapper extends Component {
 
                     </div>
                     <div className="col-xs-10">
-                        <Route path={`${props.newprops.match.path}/:routeName`} component={RouteName} />
+                        <Route path="/lads/lesson/:id" component={Lesson} />
+                        <Route exact path={`${props.newprops.match.path}/:routeName`} component={RouteName} />
 
                     </div>
 

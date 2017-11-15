@@ -82,10 +82,11 @@ router.get('/:id', function (req, res) {
                     }
 
                     // console.log(getSectionIndex(rows[i].sectionId))
-
+                    if (content.contentId){
                     sections[getSectionIndex(rows[i].sectionId)]
                         .contents
                         .push(content);
+                    }
                 }
 
                 lesson.sections = sections;
@@ -353,7 +354,7 @@ router.put('/content/:contentId', function (req, res) {
         });
 })
 
-//##Quote Routes
+//####### Quote Routes ###########
 router.get('/misc/quote', function (req, res) {
     QuoteHelper
         .getQuote(function (err, rows) {

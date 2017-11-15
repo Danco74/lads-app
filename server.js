@@ -8,6 +8,7 @@ const path = require('path');
 //Server routes modules
 const userRoutes = require('./server/routes/userRoutes');
 const lessonRoutes = require('./server/routes/lessonRoutes');
+const studentRoutes = require('./server/routes/studentRoutes');
 
 //Authtenication modules
 var expressSession = require('express-session');
@@ -44,22 +45,8 @@ app.use(passport.session());
 
 
 
-
-// // route for login action
-// app.post('/api/login', function(req, res) {
-//   passport.authenticate('local-login', {
-//     successRedirect: '/success',
-//     failureRedirect: '/login',
-//     session: false
-//   });
-// });
-
-// app.post('/api/login', passport.authenticate('local-login'), function(err, result, info){
-//   console.log("passport user", req.user);
-// });
-
-
 //Use routes middleware
+app.use('/api/students', studentRoutes);
  app.use('/api/users', userRoutes);
  app.use('/api/lessons', lessonRoutes);
 
@@ -74,6 +61,7 @@ app.get('/user/validate', function(req, res, next) {
     res.send(false);
 });
 
+//Login route
 app.post('/api/login', function(req, res, next) {
   passport.authenticate('local-login', function(err, user, info) {
     if (err) { return next(err); }
@@ -91,8 +79,7 @@ app.post('/api/login', function(req, res, next) {
 // });
 
 
-
-// start the server
+// start server
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server is running on http://localhost:3000 or http://127.0.0.1:3000');
 });

@@ -15,10 +15,9 @@ class Topics extends Component {
                     <h1 className="topicsHead">{this.props.topicName}</h1>
                     {this.props.lessons.map((lesson, index) =>
                         <div key={index}>
-                            {/* <Link to={`${this.props.routeprops.match.url}/${lesson.Title}`}> */}
-                            <a className="subtopic">
+                            <Link className="subtopic" to={`/lads/lesson/lesson/${lesson.id}`}>
                                 {lesson.Title}
-                            </a>
+                            </Link>
                             {/* </Link> */}
                         </div>)}
                 </div>
