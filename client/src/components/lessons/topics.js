@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './topics.css'
 
 
@@ -10,18 +10,18 @@ class Topics extends Component {
 
     render() {
         return (
-
-            
-                <div className="topic-wrapper">
-                    <h1 className="topicsHead">{this.props.topicName}</h1>
-                    {this.props.lessons.map((lesson, index) =>
-                        <div key={index}>
+            <div className="topic-wrapper">
+                <h1 className="topicsHead">{this.props.topicName}</h1>
+                {this.props.lessons.map((lesson, index) =>
+                    <div key={index}>
+                        {/* <Link to={`${this.props.routeprops.match.url}/${lesson.Title}`}> */}
                             <a className="subtopic">
                                 {lesson.Title}
                             </a>
-                        </div>)}
-                </div>
-           
+                        {/* </Link> */}
+                    </div>)}
+            </div>
+
         )
     }
 };

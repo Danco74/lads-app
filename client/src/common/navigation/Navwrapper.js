@@ -62,6 +62,14 @@ class Navwrapper extends Component {
 
     
 
+const RouteName = ({ match }) => {
+    switch (match.params.routeName) {
+        case 'home':
+            return <Home />
+        case 'lessons':
+            return <Lessons match={match}/>
+        case 'lesson':
+            return <Lesson />
     }
 }
 

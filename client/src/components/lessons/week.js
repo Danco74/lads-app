@@ -21,8 +21,9 @@ class Week extends Component {
     }
 
     render() {
+
         let days = Object.keys(this.props.week).map((days, index) => (
-            <Day key={index}  day={days} days={this.props.week[days]} />))
+            <Day routeprops={this.props.routeprops} key={index}  day={days} days={this.props.week[days]} />))
 
         return (
             
