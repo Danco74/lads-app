@@ -2,6 +2,7 @@ const express = require('express');
 const LessonHelper = require('../db/helpers/LessonSqlHelper.js');
 const SectionHelper = require('../db/helpers/SectionSqlHelper.js');
 const ContentHelper = require('../db/helpers/ContentSqlHelper.js');
+const QuoteHelper = require('../db/helpers/QuoteSqlHelper.js');
 const router = express.Router();
 
 // #LESSONS ROUTES #------------------------------------------------------- Add
@@ -343,6 +344,31 @@ router.delete('/section/:sectionId/content', function (req, res) {
 router.put('/content/:contentId', function (req, res) {
     ContentHelper
         .updateContent(req.params.contentId, req.body, function (err, rows) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(rows);
+            }
+
+        });
+})
+
+//##Quote Routes
+router.get('/misc/quote', function (req, res) {
+    QuoteHelper
+        .getQuote(function (err, rows) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(rows);
+            }
+
+        });
+})
+
+router.put('/misc/quote', function (req, res) {
+    QuoteHelper
+        .updateQuote(req.body, function (err, rows) {
             if (err) {
                 res.send(err);
             } else {

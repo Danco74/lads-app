@@ -10,8 +10,7 @@ class Home extends Component {
         super(props)
         this.state = {
             quote: "Its not the altitude, its the attitude",
-            username: "Dan",
-            authorization: "student",
+            user: props.user,
             inProgress: [],
             weekNumber: 2,
             lessonsInProgress: [
@@ -72,12 +71,12 @@ class Home extends Component {
         <div className="sh-wrapper col-xs-offset-1">
             <br/>
             <div className="row">
-                <h1 className="sh-hello">HELLO, {this.state.username.toLocaleUpperCase()}!</h1>
+                <h1 className="sh-hello">HELLO, {this.state.user.FirstName.toLocaleUpperCase()}!</h1>
             </div>
             <br/>
             <br/>
             <div className="row sh-quote-wrapper">
-                <Quote quote={this.state.quote} />
+                <Quote quote={this.state.quote} user={this.props.user} />
             </div>
            
        
