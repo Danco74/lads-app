@@ -60,7 +60,7 @@ router.get('/:id', function (req, res) {
                         sectionId: rows[i].sectionId,
                         sectionHeader: rows[i].sectionHeader,
                         sectionViewIndex: rows[i].sectionViewIndex,
-                        content: []
+                        contents: []
                     }
 
                     if (getSectionIndex(rows[i].sectionId) != -1) {
@@ -78,7 +78,7 @@ router.get('/:id', function (req, res) {
                     }
 
                     sections[getSectionIndex(rows[i].sectionId)]
-                        .content
+                        .contents
                         .push(content);
                 }
 
