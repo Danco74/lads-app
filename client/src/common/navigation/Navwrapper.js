@@ -16,7 +16,7 @@ class Navwrapper extends Component {
     }
 
 
- 
+
 
     render() {
 
@@ -25,12 +25,12 @@ class Navwrapper extends Component {
         const RouteName = ({ match }) => {
             switch (match.params.routeName) {
                 case 'home':
-                if (this.state.authorization === 1){
-                    return <StudentHome />
-                }
-                else if (this.state.authorization === 0) {
-                    return <TeacherHome />
-                }
+                    if (this.state.authorization === 1) {
+                        return <StudentHome />
+                    }
+                    else if (this.state.authorization === 0) {
+                        return <TeacherHome />
+                    }
                 case 'lessons':
                     return <Lessons />
                 case 'lesson':
@@ -38,7 +38,7 @@ class Navwrapper extends Component {
             }
         }
 
-        
+
 
         return (
             <div className="">
@@ -59,19 +59,21 @@ class Navwrapper extends Component {
 
             </div>
         )
-
-    
-
-const RouteName = ({ match }) => {
-    switch (match.params.routeName) {
-        case 'home':
-            return <Home />
-        case 'lessons':
-            return <Lessons match={match}/>
-        case 'lesson':
-            return <Lesson />
     }
 }
+
+
+        export default Navwrapper;
+// const RouteName = ({ match }) => {
+//     switch (match.params.routeName) {
+//         case 'home':
+//             return <Home />
+//         case 'lessons':
+//             return <Lessons match={match}/>
+//         case 'lesson':
+//             return <Lesson />
+//     }
+// }
 
 // const RouteName = ({ match }) => {
 //     switch (match.params.routeName) {
@@ -89,4 +91,3 @@ const RouteName = ({ match }) => {
 //     }
 // }
 
-export default Navwrapper;
