@@ -1,9 +1,12 @@
 .btn-sort-weeks {
     margin-right:10px;
+    background-color: #3f5f87;
+    color:white;
 }
 
 .btn-sort-topics {
-
+    background-color: #3f5f87;
+    color:white;
 }
 
 .btn-sort-weeks-wrapper {

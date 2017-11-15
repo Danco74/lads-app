@@ -1,11 +1,8 @@
-.week-minus {
-    color: #5CBDDE !important; 
-    margin-left: 10px !important;
+.fa-plus{
+color: #d7b24f;
 }
-
-.week-plus {
-    color: #5CBDDE !important;
-    margin-left: 10px !important;
+.fa-minus{
+   color: #d7b24f;
 }
 .weekLessons{
     margin: 30px 0;

@@ -5,11 +5,16 @@ html, body{
     /* font-family: 'Montserrat Alternates', sans-serif; */
     font-family: 'Barlow', sans-serif;
     height: 100%;
+    color:#3f5f87;
 }
+.col-xs-10{
+    padding-bottom:100%;
+    margin-bottom:-999px
+}
+
 #logo{
-    background-color:#5ba4e2 ;
-    color: white;
-    font-family: 'Lobster';
+    background-color: #1e3568;
+    
     font-size: 30px;
   }
   #settings{
@@ -20,7 +25,7 @@ html, body{
   }
   .columns{
     overflow: hidden;
-    background-color: #84d7d8;
+    background-color: #88e3e3;
     height: 70px;
  
   }
@@ -37,6 +42,7 @@ html, body{
   #logo a.navbar-lads {
       font-family: 'Lobster';
       font-size: 30px;
+      color: white;
       text-decoration: none;
 
   }
@@ -46,7 +52,7 @@ html, body{
   }
   .navbar-user:hover{
       text-decoration: none;
-      color:#5ba4e2;
+      color:#56a4e6;
 
   }
 
@@ -80,7 +86,7 @@ html, body{
 @import url('https://fonts.googleapis.com/css?family=Cabin|Lobster');
 
 #sidebarBox { 
-    background:  #d2e8fe;
+    background:  #dff7ff;
     margin-bottom:-9999px;
     padding-bottom:9999px;
     -webkit-transition: all .5s ease;
@@ -99,15 +105,24 @@ html, body{
    
     font-family: 'Cabin', sans-serif;
     font-size: 16px;
-    border-bottom: 2px solid #DEDEDE;
+    border-bottom: 2px solid #cccbcb;
   
 }
+
 .sidebar-title{
     padding:20px;
     text-align: center;
     color: #1e3568;
-    text-decoration: none;
     
 }
 
+.link:hover{
+    text-decoration: none;
+    color:#1e3568;;
+}
+
+.link:visited{
+    background-color: rgb(29, 54, 109, 55);
+    text-decoration: none;
+}
 

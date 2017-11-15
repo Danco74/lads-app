@@ -1,3 +1,19 @@
 .daily-quote {
     font-size: 50px;
+    position:relative;
+}
+
+.fa-quote-left{
+font-size: 25px;
+position:absolute;
+top:10px;
+left:190px
+}
+
+
+.fa-quote-right{
+font-size: 25px;
+position:absolute;
+top: 10px;
+right: 190px;
 }

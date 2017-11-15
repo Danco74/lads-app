@@ -426,8 +426,7 @@ class Lesson extends Component {
         // let form = (this.state.status.elementAdding ? formHtml : '');
         return (
             <div className="lesson-container">
-                {this.title()}
-                <Link to='/lessons'>Back To Lessons</Link>
+            <span className="lesson-title">{this.title()}</span>
                 {displaySections}
 
                 <Toolbox addSection={this.addSection} addContent={this.addContent}
