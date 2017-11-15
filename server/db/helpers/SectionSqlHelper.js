@@ -31,8 +31,8 @@ var SectionSqlHelper = {
     },
     //update section by id
     updateSection: function (id, section, callback) {
-        return db.query("update task set Header=?,LessonId=?,LogoUrl=? where Id=?", [
-            section.header, section.lessonId
+        return db.query("update sections set Header=?, where Id=?", [
+            section.header, id
         ], callback);
     }
 

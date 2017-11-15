@@ -44,7 +44,7 @@ class Toolbox extends Component {
                     <Button label='^' customAction={()=>this.props.repositionSelected('up')}/>
                     <Button label='v' customAction={()=>this.props.repositionSelected('down')}/>
                     <Button label='' />
-                    <Button label='' />
+                    <Button label='~html' customAction={()=>this.props.changeContentType('html')}/>
                     <Button label={<i className="fa fa-floppy-o fa-2x" aria-hidden="true"></i>} />
                 </div>
                 {/* {lessonElements} */}

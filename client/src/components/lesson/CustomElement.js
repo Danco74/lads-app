@@ -9,15 +9,17 @@ class CustomElement extends Component {
         }
         switch (this.props.type) {
             case "paragraph":
-                return <p onClick={this.props.selectHighlight} onDoubleClick={this.props.toggleEditing} className={this.props.type}>
+                return (<p onClick={this.props.selectHighlight} onDoubleClick={this.props.toggleEditing} className={this.props.type}>
                     {this.props.text.trim() || "???"}
-                </p>;
+                </p>);
             case "code":
-                return <code onClick={this.props.selectHighlight} onDoubleClick={this.props.toggleEditing} className={this.props.type}>
+                return (<code onClick={this.props.selectHighlight} onDoubleClick={this.props.toggleEditing} className={this.props.type}>
                     {this.props.text.trim() || "???"}
-                </code>;
+                </code>);
             case "html":
-                return 
+                return (
+                <div onClick={this.props.selectHighlight} onDoubleClick={this.props.toggleEditing} className={this.props.type} 
+                    dangerouslySetInnerHTML={{__html : this.props.text}} />);
         }
     }
     render() {

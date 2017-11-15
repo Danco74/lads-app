@@ -26,7 +26,7 @@ class Section extends Component {
             return <CustomElement
                 key={index} status={this.props.status}
                 toggleEditing={() => this.props.toggleEditing(this.props.sectionIndex, index)}
-                type={content.contentType} text={content.contentText} editContent={this.props.editContent}
+                type={content.type} text={content.text} editContent={this.props.editContent}
                 sectionIndex={this.props.sectionIndex} contentIndex={index}
                 selectHighlight={() => this.props.selectHighlight(this.props.sectionIndex, index)}
             ></CustomElement>

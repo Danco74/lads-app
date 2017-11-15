@@ -61,7 +61,7 @@ router.get('/:id', function (req, res) {
                 for (let i = 0; i < rows.length; i++) {
                     var section = {
                         sectionId: rows[i].sectionId,
-                        sectionHeader: rows[i].sectionHeader,
+                        header: rows[i].sectionHeader,
                         sectionViewIndex: rows[i].sectionViewIndex,
                         contents: []
                     }
@@ -76,16 +76,18 @@ router.get('/:id', function (req, res) {
 
                     var content = {
                         contentId: rows[i].contentId,
-                        contentType: rows[i].contentType,
-                        contentViewIndex: rows[i].contentViewIndex,
-                        contentText: rows[i].contentText
+                        type: rows[i].contentType,
+                        viewIndex: rows[i].contentViewIndex,
+                        text: rows[i].contentText
                     }
 
                     // console.log(getSectionIndex(rows[i].sectionId))
 
-                    sections[getSectionIndex(rows[i].sectionId)]
+                    if(content.contentId) {
+                        sections[getSectionIndex(rows[i].sectionId)]
                         .contents
                         .push(content);
+                    }
                 }
 
                 lesson.sections = sections;
