@@ -3,12 +3,10 @@
 body{
     /* font-family: 'Montserrat Alternates', sans-serif; */
     font-family: 'Barlow', sans-serif;
-    
-    
+  
+
 }
-.lesson-container{
-    text-align:center;
-}
+/*lesson component styles*/
 .code{
     color:white;
     background-color:black;
@@ -49,7 +47,7 @@ hr{
     width:70%;
 }
 
-
+/*Lessons component styles*/
 .daysList{
 
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -115,16 +113,15 @@ hr{
     margin-bottom: 25px;
     width: 100%;
 }
+
+/*Home component styles*/
 .progress-container{
     box-shadow:0 0 10px 10px #8a8a8a;
     width:45%;
     height:auto;
    
 }
-.home{
-    margin-left: 150px;
-    
-}
+
 .pinned-container{
     border:1px solid black;
     width:45%;
@@ -157,68 +154,71 @@ hr{
     transition: all .5s ease;
 }
 
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
     #sidebar-container {
         padding-left: 225px;
     }
     #sidebar-container #sidebar-wrapper {
         width: 100px;
     }
-}
+} */
 
 /* Sidebar CSS */
 @import url('https://fonts.googleapis.com/css?family=Cabin|Lobster');
 
-#sidebarBox {
-    margin-top: 70px; 
-    z-index: 1000;
-    position: fixed;
-    /* left: 225px; */
-    margin-left:-225px;
-    width: auto;
-    height: 100%;
-    overflow-y: auto;
+#sidebarBox { 
     background: #EBEBEB;
+    min-height: 800px;
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease;
-    /* border:3px solid green;    */
 }
 #sidebar-nav {
-    top: 0;
-    width: 100%;
-    font-size: 14px;
-    margin: 0;
-    padding: 0; 
+    font-size: 14px; 
     list-style: none; 
-    /* border:3px solid red; */
+    padding-left:20px;
   
 }
  #sidebar-nav li {
-    line-height: 50px;
-    /* border:3px solid blue; */
-    padding:10px;
+    line-height: 70px;
+   
     font-family: 'Cabin', sans-serif;
     font-size: 16px;
     border-bottom: 2px solid #DEDEDE;
-    height: 60px;
+  
 }
 .sidebar-title{
-    /* border: 3px solid orange; */
+    padding:20px;
     text-align: center;
-    margin: 40px;
+    
 }
 
 /* Navbar CSS */
-.navbar-container {
+/* .navbar-container {
     overflow: hidden;
     background-color: #5CBDDE;
     height: 70px;
+  } */
+  #logo{
+    background-color: #309AB0;
+    color: white;
+    font-family: 'Lobster';
+    font-size: 30px;
   }
-  
-  .navbar-container a {
-    float: right;
+  #settings{
+    font-size: 18px;
+    padding:25px;
+    text-align:right;
+
+  }
+  .columns{
+    overflow: hidden;
+    background-color: #5CBDDE;
+    height: 70px;
+ 
+  }
+.navbar-lads{
     display: block;
     color: #f2f2f2;
     text-align: center;
@@ -227,20 +227,48 @@ hr{
     font-size: 17px;
     font-family: 'Cabin', sans-serif;
   }
-  .navbar-container a:hover {
-    color: black;
-  }
-  .navbar-container a.navbar-lads {
-      background-color: #309AB0;
-      color: white;
-      width: 198px;
-      height: 74px;
+
+  #logo a.navbar-lads {
       font-family: 'Lobster';
       font-size: 30px;
-      float: left;
-  }
-  .navbar-user{
-      margin: 8px 30px;
+      text-decoration: none;
 
   }
+  .navbar-user{
+    padding:0 35px;
+  }
+  .navbar-user:hover{
+      text-decoration: none;
+      
+
+  }
+  .container{
+      margin:0;
+      padding:0;
+      width:100%
+  }
   
+  /* CREATE NEW LESSON CSS */
+  .createLessonBox{
+        height: 400px;
+        padding-top: 200px;
+        background-color: rgba(224, 218, 218, 0.84);
+        width: 40%;
+        padding: 20px;
+        border-radius: 10px;    
+        position: absolute;
+        border: 3px solid black;
+        left: 30%;
+  }
+  .createLessonForm{
+      position: relative;
+      border: 3px solid green;
+  }
+.createLessonBox .form-control {
+    margin-bottom: 20px;
+} 
+.createLessonBox button{
+    /* margin-top:  */
+    width: 30%;
+    height: 30px;
+}

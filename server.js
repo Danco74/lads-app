@@ -80,14 +80,14 @@ app.post('/api/login', function(req, res, next) {
     if (!user) { return res.redirect('/login'); }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
-      return res.redirect('/lessons');
+      return res.redirect('/');
     });
   })(req, res, next);
 });
 
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '/server/static/index.html'));
+  res.send(path.join(__dirname, '/server/static/index.html'));
 });
 
 

@@ -1,11 +1,8 @@
 import React from 'react';
-import MainApp from './';
 import Page404 from './common/404';
-import Login from './components/login/Login.js'
-import Lessons from './components/teacher/lessons/lessons'
-import Lesson from './components/teacher/lesson/lesson'
-import Home from './common/Home'
-import {Switch, Route, Redirect} from 'react-router-dom';
+import Login from './common/login/Login.js';
+import Navwrapper from './common/navigation/Navwrapper';
+import { HashRouter, Router,Route, Redirect } from 'react-router-dom';
 
 const axios = require('axios');
 
@@ -16,7 +13,7 @@ class Routes extends React.Component {
       isLoggedIn: "false",
       wasServerQueried: false,
       roleId: -1
-      
+
     }
 
     this.isLoggedIn = this
@@ -26,16 +23,17 @@ class Routes extends React.Component {
   }
 
   componentWillMount() {
-    
+
     var that = this;
+ 
 
     axios
       .get('http://localhost:3000/user/validate')
       .then(function (response) {
         if (response.data) {
-          that.setState({isLoggedIn: true, wasServerQueried: true, roleId: response.data.roleId});
+          that.setState({ isLoggedIn: true, wasServerQueried: true, roleId: response.data.roleId });
         } else {
-          that.setState({isLoggedIn: false, wasServerQueried: true});
+          that.setState({ isLoggedIn: false, wasServerQueried: true });
         }
 
       });
@@ -50,33 +48,36 @@ class Routes extends React.Component {
     if (this.state.wasServerQueried) {
       return (
         <div className="container">
-          <Switch>
+  
+  <HashRouter>
+          <Route exact path="/"
+               render={() => (!this.isLoggedIn()
+                 ? (<Login />)
+                 : (<Redirect to="/lads" />))} />
 
-            <Route
-              exact
-              path="/"
-              render={() => (!this.isLoggedIn()
-              ? (<Redirect to="/login"/>)
-              : (<Home/>))}/>
+      
+   
+          {/* <Route path="*" component={Page404} /> */}
+      </HashRouter>
 
-            <Route
-              exact
-              path="/lessons"
-              render={() => (!this.isLoggedIn()
-              ? (<Redirect to="/login"/>)
-              : (<Lessons/>))}/>
-            <Route exact path="/lesson" component={Lesson}/>
-            <Route exact path="/login" component={Login}/>
-            <Route path="*" component={Page404}/>
+      <HashRouter>
+     
+          <Route path="/lads"
+               render={(props) => (!this.isLoggedIn()
+                 ? (<Login />)
+                 : (<Navwrapper newprops={props}/>))} /> 
 
-          </Switch>
+   
+        
+      </HashRouter>
+
         </div>
       );
     }
     else {
       return (
-        <div className="container">
-          </div>
+        <div>
+        </div>
       )
     }
   }
