@@ -4,6 +4,7 @@ import Login from './common/login/Login.js';
 import Lesson from './components/lesson/lesson.js';
 import Navwrapper from './common/navigation/Navwrapper';
 import { HashRouter, Router,Route, Redirect } from 'react-router-dom';
+import Lesson from './components/lesson/lesson.js'
 
 const axios = require('axios');
 

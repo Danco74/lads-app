@@ -10,28 +10,30 @@ class CustomElement extends Component {
     //     this.selectType()
     // }
 
-    isSelected() {
-        return ((this.props.status.currentSection === this.props.sectionIndex && this.props.status.currentContent === this.props.contentIndex) ? 'selected' : '')
+    handleKeys(event){
+        console.log(event)
     }
 
     selectType() {
-        if (this.props.editing) {
+        if (this.props.status.currentSection === this.props.sectionIndex && this.props.status.currentContent === this.props.contentIndex && this.props.status.editing) {
             return <Form text={this.props.text} editContent={this.props.editContent} sectionIndex={this.props.sectionIndex} contentIndex={this.props.contentIndex} />
         }
         switch (this.props.type) {
             case "paragraph":
-                return <p onClick={this.props.selectHighlight} onDoubleClick={this.props.toggleEditing} className={`${this.props.type} ${this.isSelected()}`}>
-                    {this.props.text}
+                return <p onClick={this.props.selectHighlight} onDoubleClick={this.props.toggleEditing} className={this.props.type}>
+                    {this.props.text || "???"}
                 </p>;
             case "code":
-                return <code onClick={this.props.selectHighlight} onDoubleClick={this.props.toggleEditing} className={`${this.props.type} ${this.isSelected()}`}>
-                    {this.props.text}
+                return <code onClick={this.props.selectHighlight} onDoubleClick={this.props.toggleEditing} className={this.props.type}>
+                    {this.props.text || "???"}
                 </code>;
         }
     }
     render() {
+        let isSelected = ((this.props.status.currentSection === this.props.sectionIndex && this.props.status.currentContent === this.props.contentIndex) ? 'selected' : '')
+
         return (
-            <div className="content-container">
+            <div className={`content-container ${isSelected}`}>
                 {this.selectType()}
             </div>
         )
