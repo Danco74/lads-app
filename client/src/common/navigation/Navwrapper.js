@@ -39,7 +39,7 @@ const RouteName = ({ match }) => {
         case 'home':
             return <Home />
         case 'lessons':
-            return <Lessons />
+            return <Lessons match={match}/>
         case 'lesson':
             return <Lesson />
     }
