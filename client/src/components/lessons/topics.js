@@ -16,11 +16,10 @@ class Topics extends Component {
                     <h1 className="topicsHead">{this.props.topicName.toUpperCase()}</h1>
                     {this.props.lessons.map((lesson, index) =>
                         <div key={index}>
-                            <Link className="subtopic link" to={`/lads/lesson/${lesson.id}`} >
-                            {/* <Link to={`${this.props.routeprops.url}`} >  */}
-                                {lesson.Title.toUpperCase()}
-                     
+                            <Link className="subtopic link" to={`/lads/lesson/lesson/${lesson.id}`}>
+                                {lesson.Title}
                             </Link>
+                            {/* </Link> */}
                         </div>)}
                 </div>
 

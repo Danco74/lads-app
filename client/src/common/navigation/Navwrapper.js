@@ -32,10 +32,9 @@ class Navwrapper extends Component {
                     return <TeacherHome user={this.state.user}/>
                 }
                 case 'lessons':
-                    return <Lessons user={this.state.user} match={match}/>
-
+                    return <Lessons user={this.state.user}/>
                 // case 'lesson':
-                //     return <Lesson user={this.state.user}/>
+                //     return <Lesson id={match.params} user={this.state.user}/>
             }
         }
 
@@ -51,16 +50,13 @@ class Navwrapper extends Component {
 
                     </div>
                     <div className="col-xs-10">
+                        <Route path="/lads/lesson/:id" component={Lesson} />
+                        <Route exact path={`${props.newprops.match.path}/:routeName`} component={RouteName} />
 
 
                         <Route exact path='/lads' render={(props)=>(this.state.user.RoleId === 0 
                             ? (<StudentHome user={this.state.user}/>) 
                             : (<TeacherHome user={this.state.user}/>))} />
-
-
-                        <Route path="/lads/lesson/:id" component={Lesson} />
-                        <Route path={`${props.newprops.match.path}/:routeName`} component={RouteName} />
-                       
 
                     </div>
 

@@ -355,7 +355,7 @@ router.put('/content/:contentId', function (req, res) {
         });
 })
 
-//##Quote Routes
+//####### Quote Routes ###########
 router.get('/misc/quote', function (req, res) {
     QuoteHelper
         .getQuote(function (err, rows) {

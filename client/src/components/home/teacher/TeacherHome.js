@@ -2,27 +2,41 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Quote from "../common/Quote";
 import './TeacherHome.css';
+import StudentsView from './StudentsView.js'
+import axios from 'axios'
 
 class TeacherHome extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            quote: "Its not the altitude, its the attitude",
             user: this.props.user,
-            authorization: "student"
+            students: []
         }
 
-        console.log(props);
     }
 
     componentWillMount() {
+        let that = this;
+        axios
+        .get('http://localhost:3000/api/students')
+        .then(function (response) {
+            if (response.data) {
+                that.setState({ students: response.data });
+            }
 
-        // this.state.lessons.forEach((lesson) => {     if (lesson.completion < 100) {
-        //       this.setState((prevState) => { return { inProgress:
-        // prevState.inProgress.concat(lesson) } })     } })
+        });
     }
 
     render() {
+
+        let studentView;
+        if (this.state.students.length > 0) {
+            studentView = <StudentsView students={this.state.students}/>;
+        }
+        else{
+            studentView = "";
+        }
+
         return (
 
             <div className="sh-wrapper col-xs-offset-1">
@@ -35,6 +49,9 @@ class TeacherHome extends Component {
                 <br/>
                 <div className="row sh-quote-wrapper">
                     <Quote quote={this.state.quote} user={this.props.user}/>
+                </div>
+                <div className="row th-sv-wrapper">
+                    {studentView}
                 </div>
             </div>
         )
