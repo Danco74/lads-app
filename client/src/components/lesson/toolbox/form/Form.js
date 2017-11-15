@@ -9,6 +9,10 @@ class Form extends Component {
         this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
+    componentDidMount(){
+        this.nameInput.focus();
+    }
+
     handleChange(event) {
         this.setState({ input: event.target.value })
     }
@@ -16,7 +20,6 @@ class Form extends Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.editContent(this.state.input, this.props.sectionIndex, this.props.contentIndex);
-        //this.props.toggleNew();
     }
 
     componentWillMount() {
@@ -32,7 +35,7 @@ class Form extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <textarea type='text' placeholder='Add text here' value={this.state.input} onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
+                <textarea ref={(textarea) => { this.nameInput = textarea; }} type='text' placeholder='Add text here' value={this.state.input} onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
                 <input className='submit-button' type='submit' value='Save'/>
             </form>
         );

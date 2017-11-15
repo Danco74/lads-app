@@ -267,14 +267,6 @@ class Lesson extends Component {
     }
 
     toggleEditing(sectionIndex, contentIndex) {
-        // if (contentIndex >= 0) {
-        //     let contentEditable = this.state.sections[sectionIndex].contents[contentIndex].editable;
-        //     this.setState((prevState) => { return { [prevState.sections[sectionIndex]]: prevState.sections[sectionIndex].contents[contentIndex].editable = !contentEditable } })
-        // }
-        // else if (sectionIndex >= 0) {
-        //     let sectionEditable = this.state.sections[sectionIndex].headerEditable;
-        //     this.setState((prevState) => { return { [prevState.sections[sectionIndex]]: prevState.sections[sectionIndex].headerEditable = !sectionEditable } })
-        // }
         this.setState({[this.state.status.editing]: this.state.status.editing = !this.state.status.editing});
         console.log(this.state.status.editing);
     }
@@ -312,23 +304,26 @@ class Lesson extends Component {
 
     _handleKeyPress(event) {
         console.log(event);
-        //event.preventDefault();
         if(this.state.status.editing) {
             return;
         }
         else if(event.altKey) {
-            if(event.code === 'Enter') {
-                this.toggleEditing(this.state.status.currentSection, this.state.status.currentContent);
-            }
-            else if(event.code === 'ArrowUp') {
+            if(event.code === 'ArrowUp') {
+                event.preventDefault();
                 this.repositionSelected('up');
             }
             else if(event.code === 'ArrowDown') {
+                event.preventDefault();
                 this.repositionSelected('down');
             }
         }
         else if(!event.altKey) {
-            if(event.code === 'ArrowUp') {
+            if(event.code === 'Enter') {
+                event.preventDefault();
+                this.toggleEditing(this.state.status.currentSection, this.state.status.currentContent);
+            }
+            else if(event.code === 'ArrowUp') {
+                event.preventDefault();
                 if(this.state.status.currentSection === undefined) {
                     return;
                 }
@@ -345,6 +340,7 @@ class Lesson extends Component {
                 }
             }
             else if(event.code === 'ArrowDown') {
+                event.preventDefault();
                 // no sections
                 if(this.state.sections.length === 0) {
                     return;
@@ -380,7 +376,7 @@ class Lesson extends Component {
         }
         return <div className={`lesson-title ${this.state.status.currentSection === undefined && this.state.status.currentContent === undefined ? 'selected' : ''}`}>
                     <h1 onClick={()=>this.selectHighlight(undefined, undefined)} onDoubleClick={()=>this.toggleEditing(undefined, undefined)}>
-                        {this.state.title || '???'}
+                        {this.state.title.trim() || '???'}
                     </h1>
                 </div>
     }
