@@ -21,32 +21,32 @@ class Lessons extends Component {
         }
     }
 
-    componentWillMount(){
+    componentWillMount() {
 
         let that = this;
 
         axios
-        .get('http://localhost:3000/api/lessons/sorted/byweeks')
-        .then(function (response) {
-          if (response.data) {
-            that.setState({weeks:response.data});
-          }
-  
-        });
+            .get('http://localhost:3000/api/lessons/sorted/byweeks')
+            .then(function (response) {
+                if (response.data) {
+                    that.setState({ weeks: response.data });
+                }
+
+            });
 
         axios
-        .get('http://localhost:3000/api/lessons/sorted/bytopic')
-        .then(function (response) {
-          if (response.data) {
-            that.setState({topics:response.data});
-          }
-  
-        });
+            .get('http://localhost:3000/api/lessons/sorted/bytopic')
+            .then(function (response) {
+                if (response.data) {
+                    that.setState({ topics: response.data });
+                }
+
+            });
     }
 
     addLesson(lesson) {
 
-  
+
         let newWeeks = Object.assign({}, this.state.weeks);
         newWeeks[`week${lesson.WeekNumber}`][`day${lesson.DayNumber}`].push(lesson);
         this.setState({ weeks: newWeeks });
@@ -63,22 +63,18 @@ class Lessons extends Component {
         let weekOrTopic = () => {
             if (this.state.mode == true) {
                 return Object.keys(this.state.topics).map((topic, index) => (
-                    <Topics key={index} lessons={this.state.topics[topic].lessons} topicName={topic} />
+                    <Topics routeprops={this.props.match} key={index} lessons={this.state.topics[topic].lessons} topicName={topic} />
                 ))
             } else {
                 return Object.keys(this.state.weeks).map((week, index) => (
-                    <Week key={index} week={this.state.weeks[week]} test={week} weekNumber={week} />
+                    <Week routeprops={this.props.match} key={index} week={this.state.weeks[week]} test={week} weekNumber={week} />
                 ))
             }
         }
         return (
 
             <div className="col-xs-offset-1">
-                {/* <h1>LESSONS</h1> */}
-                {/* <br />
-                <CreateLesson addLesson={this.addLesson} />
-                <br /> */}
-                <div className = "btn-wrapper">
+                <div className="btn-wrapper">
                     <div className="col-xs-6 btn-sort-weeks-wrapper">
                         <button type="button" className="btn btn-info btn-sort-weeks" onClick={this.renderWeeks}>SORT BY WEEKS !</button>
                     </div>
@@ -86,14 +82,10 @@ class Lessons extends Component {
                         <button type="button" className="btn btn-info btn-sort-topics" onClick={this.renderTopics}>SORT BY TOPICS !</button>
                     </div>
                 </div>
-                <br/>
-                <br/>
-                <br/>
- 
-                <div className = "row week-topic-wrapper">
+                <div className="row week-topic-wrapper">
                     {weekOrTopic()}
                 </div>
-                
+
             </div>
         )
     }

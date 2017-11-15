@@ -16,22 +16,22 @@ class Day extends Component {
 
         return (
 
-
-            
-                <div className="day-wrapper">
-                    <div className="day-header">DAY {this.props.day}</div>
-                    <br />
-                    <div className="day-topic">
-                        {this.props.days.map((day, index) =>
-                            <div key={index}>
+            <div className="day-wrapper">
+                <div className="day-header">DAY {this.props.day}</div>
+                <br />
+                <div className="day-topic">
+                    {this.props.days.map((day, index) =>
+                        <div key={index}>
+                            {/* <Link to={`${this.props.routeprops.match.url}/${day.Topic}`}> */}
                                 <a href="#" className="weekTopic">
                                     {day.Topic}
                                 </a>
+                            {/* </Link> */}
 
-                            </div>)}
-                    </div>
+                        </div>)}
                 </div>
-            
+            </div>
+
 
 
 
