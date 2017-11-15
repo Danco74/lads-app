@@ -6,8 +6,6 @@ import Navwrapper from './common/navigation/Navwrapper'
 import Login from './common/login/Login.js'
 import { Link, Route } from 'react-router-dom';
 
-import './style.css'
-
 class AppWrapper extends React.Component {
   render() {
     

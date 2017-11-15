@@ -73,12 +73,12 @@ class Lessons extends Component {
         }
         return (
 
-            <div className="col-xs-offset-1">
+            <div className="align">
                 <div className="btn-wrapper">
-                    <div className="col-xs-6 btn-sort-weeks-wrapper">
+                    <div className=" btn-sort-weeks-wrapper">
                         <button type="button" className="btn btn-info btn-sort-weeks" onClick={this.renderWeeks}>SORT BY WEEKS !</button>
                     </div>
-                    <div className="col-xs-6 btn-sort-stopics-wrapper">
+                    <div className=" btn-sort-topics-wrapper">
                         <button type="button" className="btn btn-info btn-sort-topics" onClick={this.renderTopics}>SORT BY TOPICS !</button>
                     </div>
                 </div>

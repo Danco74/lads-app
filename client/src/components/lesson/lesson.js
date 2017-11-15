@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import Section from './section'
-import Toolbox from './toolbox/Toolbox'
-import Form from './toolbox/form/Form'
-import axios from 'axios'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import Section from './section';
+import Toolbox from './toolbox/Toolbox';
+import Form from './toolbox/form/Form';
+import axios from 'axios';
+import './lesson.css';
 
 class Lesson extends Component {
     constructor(props) {

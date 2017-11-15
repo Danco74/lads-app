@@ -10,16 +10,18 @@ class Topics extends Component {
 
     render() {
         return (
-            <div className="topic-wrapper">
-                <h1 className="topicsHead">{this.props.topicName}</h1>
-                {this.props.lessons.map((lesson, index) =>
-                    <div key={index}>
-                        {/* <Link to={`${this.props.routeprops.match.url}/${lesson.Title}`}> */}
+            <div className="topics-wrapper">
+                <div className="topic-wrapper">
+                    <h1 className="topicsHead">{this.props.topicName}</h1>
+                    {this.props.lessons.map((lesson, index) =>
+                        <div key={index}>
+                            {/* <Link to={`${this.props.routeprops.match.url}/${lesson.Title}`}> */}
                             <a className="subtopic">
                                 {lesson.Title}
                             </a>
-                        {/* </Link> */}
-                    </div>)}
+                            {/* </Link> */}
+                        </div>)}
+                </div>
             </div>
 
         )

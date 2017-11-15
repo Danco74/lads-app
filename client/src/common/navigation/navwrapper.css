@@ -1,6 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates');
+@import url('https://fonts.googleapis.com/css?family=Barlow');
 /* Navbar CSS */
+html, body{
+    /* font-family: 'Montserrat Alternates', sans-serif; */
+    font-family: 'Barlow', sans-serif;
+    height: 100%;
+}
 #logo{
-    background-color: #309AB0;
+    background-color:#5ba4e2 ;
     color: white;
     font-family: 'Lobster';
     font-size: 30px;
@@ -13,7 +20,7 @@
   }
   .columns{
     overflow: hidden;
-    background-color: #5CBDDE;
+    background-color: #84d7d8;
     height: 70px;
  
   }
@@ -35,17 +42,21 @@
   }
   .navbar-user{
     padding:0 35px;
+    color: #1e3568;
   }
   .navbar-user:hover{
       text-decoration: none;
-      
+      color:#5ba4e2;
 
   }
+
   .container{
       margin:0;
       padding:0;
-      width:100%
-  }
+      width:100%;
+      min-height:100%;
+      overflow:hidden;
+     }
   /*bootstrap sidebar classes styles*/
  #sidebar-container {
     /* padding-top: 50px; */
@@ -69,8 +80,9 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin|Lobster');
 
 #sidebarBox { 
-    background: #EBEBEB;
-    min-height: 800px;
+    background:  #d2e8fe;
+    margin-bottom:-9999px;
+    padding-bottom:9999px;
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     -o-transition: all .5s ease;
@@ -93,5 +105,9 @@
 .sidebar-title{
     padding:20px;
     text-align: center;
+    color: #1e3568;
+    text-decoration: none;
     
 }
+
+

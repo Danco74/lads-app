@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-sh-wrapper{
+/* .sh-wrapper{
     font-family: "Open Sans";
-}
+} */
 
 .sh-hello {
     text-align: left;
@@ -12,9 +12,9 @@ sh-wrapper{
     text-align: center;
     
 }
-.sh-progress-header {
+.sh-header {
     text-align: left;
-    margin-top: 200px;
+    margin-top: 50px;
     font-size: 30px;
     
 }
