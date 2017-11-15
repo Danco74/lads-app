@@ -3,8 +3,8 @@ var db = require('../dbconnection');
 var ContentSqlHelper = {
     //Add content
     addContent: function (lessonId, sectionId, content, callback) {
-        return db.query("Insert into content set Type=?,LessonId=?,SectionId=?,ViewIndex=?,Text=?", [
-            content.Type, lessonId, sectionId, content.ViewIndex, content.text
+        return db.query("Insert into content set Type=?,SectionId=?,ViewIndex=?,Text=?", [
+            content.type, sectionId, content.viewIndex, content.text
         ], callback);
     },
     //Get all contents
@@ -23,17 +23,17 @@ var ContentSqlHelper = {
         return db.query("select * from content where Id=?", [id], callback);
     },
     //delete content by content id
-    delteContent: function (id, callback) {
+    deleteContent: function (id, callback) {
         return db.query("delete from content where Id=?", [id], callback);
     },
     //delete content by section id
-      delteContentBySectionId: function (sectionId, callback) {
+      deleteContentBySectionId: function (sectionId, callback) {
         return db.query("delete from content where SectionId=?", [sectionId], callback);
     },
     //update content by id
     updateContent: function (contentId, content, callback) {
-        return db.query("update task set Type=?,Text=?,ViewIndex=? where ContentId=?", [
-            content.Type, content.Text, content.ViewIndex
+        return db.query("update content set Type=?,Text=?,ViewIndex=? where id=?", [
+            content.type, content.text, content.viewIndex, contentId
         ], callback);
     }
 
