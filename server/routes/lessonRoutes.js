@@ -40,13 +40,15 @@ router.get('/:id', function (req, res) {
                 res.send("Empty results");
             } else {
                 var getSectionIndex = function (id) {
+
                     for (let i = 0; i < sections.length; i++) {
+
                         if (sections[i].sectionId == id) {
                             return i;
-                        } else {
-                            return -1;
                         }
                     }
+
+                    return -1;
                 };
 
                 var lesson = {};
@@ -63,7 +65,8 @@ router.get('/:id', function (req, res) {
                         contents: []
                     }
 
-                    if (getSectionIndex(rows[i].sectionId) != -1) {
+                    if (getSectionIndex(rows[i].sectionId) == -1) {
+
                         sections.push(section)
                     }
                 }
@@ -76,6 +79,8 @@ router.get('/:id', function (req, res) {
                         contentViewIndex: rows[i].contentViewIndex,
                         contentText: rows[i].contentText
                     }
+
+                    // console.log(getSectionIndex(rows[i].sectionId))
 
                     sections[getSectionIndex(rows[i].sectionId)]
                         .contents
@@ -127,7 +132,7 @@ router.get('/sorted/byweeks', function (req, res) {
 
                 // for (var key in weeks){     weeks[key].sort(function(a, b){ if(a.DayNumber <
                 // b.DayNumber) return -1;         if(a.DayNumber > b.DayNumber) return 1;
-                //   return 0;     }); }
+                // return 0;     }); }
 
                 res.send(weeks);
             }
