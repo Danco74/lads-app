@@ -48,30 +48,7 @@ class Routes extends React.Component {
     if (this.state.wasServerQueried) {
       return (
         <div className="container">
-<<<<<<< HEAD
-          <Switch>
-
-            <Route
-              exact
-              path="/"
-              render={() => (!this.isLoggedIn()
-              ? (<Redirect to="/login"/>)
-              : (<Home/>))}/>
-
-            <Route
-              exact
-              path="/lessons"
-              render={() => (!this.isLoggedIn()
-              ? (<Redirect to="/login"/>)
-              : (<Lessons/>))}/>
-
-              <Route exact path="/home" component={StudentHome}/>
-            <Route exact path="/lesson" component={Lesson}/>
-            <Route exact path="/login" component={Login}/>
-            <Route path="*" component={Page404}/>
-
-          </Switch>
-=======
+  
   
           <Route exact path="/"
                render={() => (!this.isLoggedIn()
@@ -86,7 +63,6 @@ class Routes extends React.Component {
    
           <Route path="*" component={Page404} />
 
->>>>>>> 28ed4d6d6ad9b0e899a739660729ab5aebffff80
         </div>
       );
     }
