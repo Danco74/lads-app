@@ -15,7 +15,7 @@ class Section extends Component {
         return (
             <div className={`lesson-section-header ${isSelected}`}>
                 <h2 onClick={() => this.props.selectHighlight(this.props.sectionIndex)} onDoubleClick={() => this.props.toggleEditing(this.props.sectionIndex)}>
-                    {this.props.section.header || '???'}
+                    {this.props.section.header.trim() || '???'}
                 </h2>
             </div>)
     }

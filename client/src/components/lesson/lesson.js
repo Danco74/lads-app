@@ -267,14 +267,6 @@ class Lesson extends Component {
     }
 
     toggleEditing(sectionIndex, contentIndex) {
-        // if (contentIndex >= 0) {
-        //     let contentEditable = this.state.sections[sectionIndex].contents[contentIndex].editable;
-        //     this.setState((prevState) => { return { [prevState.sections[sectionIndex]]: prevState.sections[sectionIndex].contents[contentIndex].editable = !contentEditable } })
-        // }
-        // else if (sectionIndex >= 0) {
-        //     let sectionEditable = this.state.sections[sectionIndex].headerEditable;
-        //     this.setState((prevState) => { return { [prevState.sections[sectionIndex]]: prevState.sections[sectionIndex].headerEditable = !sectionEditable } })
-        // }
         this.setState({[this.state.status.editing]: this.state.status.editing = !this.state.status.editing});
         console.log(this.state.status.editing);
     }

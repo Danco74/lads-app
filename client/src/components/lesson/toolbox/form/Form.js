@@ -11,8 +11,6 @@ class Form extends Component {
 
     componentDidMount(){
         this.nameInput.focus();
-        // console.log(this.nameInput)
-        // this.nameInput.setSelectionRange(0, 0);
     }
 
     handleChange(event) {
@@ -22,7 +20,6 @@ class Form extends Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.editContent(this.state.input, this.props.sectionIndex, this.props.contentIndex);
-        //this.props.toggleNew();
     }
 
     componentWillMount() {

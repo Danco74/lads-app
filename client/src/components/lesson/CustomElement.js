@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
 import Form from './toolbox/form/Form'
 
-//const Code = (props) => (<code className={props.type}>Type:Code ||Text: {props.text}</code>)
-
-// const Paragraph = (props) => (<p onClick={()=>alert('hi')} className={props.type}>Type: Paragraph || Text: {props.text}</p>)
-
 class CustomElement extends Component {
-    // componentWillReceiveProps() {
-    //     this.selectType()
-    // }
-
-    handleKeys(event){
-        console.log(event)
-    }
 
     selectType() {
         if (this.props.status.currentSection === this.props.sectionIndex && this.props.status.currentContent === this.props.contentIndex && this.props.status.editing) {
@@ -21,12 +10,14 @@ class CustomElement extends Component {
         switch (this.props.type) {
             case "paragraph":
                 return <p onClick={this.props.selectHighlight} onDoubleClick={this.props.toggleEditing} className={this.props.type}>
-                    {this.props.text || "???"}
+                    {this.props.text.trim() || "???"}
                 </p>;
             case "code":
                 return <code onClick={this.props.selectHighlight} onDoubleClick={this.props.toggleEditing} className={this.props.type}>
-                    {this.props.text || "???"}
+                    {this.props.text.trim() || "???"}
                 </code>;
+            case "html":
+                return 
         }
     }
     render() {
