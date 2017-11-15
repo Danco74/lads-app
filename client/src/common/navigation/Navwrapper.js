@@ -2,14 +2,43 @@ import React, { Component } from 'react';
 import { Switch, Route, LinkProps, Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
-import Home from '../../components/home/student/StudentHome'
+import StudentHome from '../../components/home/student/StudentHome'
+import TeacherHome from '../../components/home/teacher/TeacherHome'
 import Lessons from '../../components/lessons/lessons'
 import Lesson from '../../components/lesson/lesson'
 
 class Navwrapper extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            authorization: props.authorization
+        }
+    }
+
+
+ 
 
     render() {
+
         const { props } = this;
+
+        const RouteName = ({ match }) => {
+            switch (match.params.routeName) {
+                case 'home':
+                if (this.state.authorization === 1){
+                    return <StudentHome />
+                }
+                else if (this.state.authorization === 0) {
+                    return <TeacherHome />
+                }
+                case 'lessons':
+                    return <Lessons />
+                case 'lesson':
+                    return <Lesson />
+            }
+        }
+
+        
 
         return (
             <div className="">
@@ -31,8 +60,7 @@ class Navwrapper extends Component {
             </div>
         )
 
-    }
-}
+    
 
 const RouteName = ({ match }) => {
     switch (match.params.routeName) {
@@ -44,5 +72,21 @@ const RouteName = ({ match }) => {
             return <Lesson />
     }
 }
+
+// const RouteName = ({ match }) => {
+//     switch (match.params.routeName) {
+//         case 'home':
+//         if (this.state.authorization === 0){
+//             return <StudentHome />
+//         }
+//         else if (this.state.authorization === 1) {
+//             return <TeacherHome />
+//         }
+//         case 'lessons':
+//             return <Lessons />
+//         case 'lesson':
+//             return <Lesson />
+//     }
+// }
 
 export default Navwrapper;

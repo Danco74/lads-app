@@ -32,7 +32,7 @@ class Routes extends React.Component {
       .get('http://localhost:3000/user/validate')
       .then(function (response) {
         if (response.data) {
-          that.setState({ isLoggedIn: true, wasServerQueried: true, roleId: response.data.roleId });
+          that.setState({ isLoggedIn: true, wasServerQueried: true, roleId: response.data.roleid });
         } else {
           that.setState({ isLoggedIn: false, wasServerQueried: true });
         }
@@ -63,10 +63,10 @@ class Routes extends React.Component {
 
       <HashRouter>
      
-          <Route path="/lads"
+          <Route path="/lads" 
                render={(props) => (!this.isLoggedIn()
                  ? (<Login />)
-                 : (<Navwrapper newprops={props}/>))} /> 
+                 : (<Navwrapper  authorization={this.state.roleId} newprops={props}/>))} /> 
 
    
         
