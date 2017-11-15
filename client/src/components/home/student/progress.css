@@ -17,16 +17,17 @@
 
 .pg-completion {
     font-weight: bold;
-    color:#5CBDDE;
+    color: #d7b24f;
     font-size: 45px;
 }
 
 .pg-logo{
     position: absolute;
-    left: -9px;
-    top: 3px;
-    width: 38%;
+    left: -5px;
+    top: -26px;
+    width: 30%;
     height: 100%;
+    
 }
 
 .pg-topic{

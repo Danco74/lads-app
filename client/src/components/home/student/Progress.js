@@ -6,21 +6,20 @@ function Progress(props) {
 
     return (
         <div className="pg-block-wrapper">
-            
+
             {props.inProgress.map((lesson, index) => {
                 return (
-                    <div key={index} className="pg-block">     
-                        <div className="pg-topic"> <img className="pg-logo" src={`${lesson.logo}`}/><a href="#"> {lesson.Topic} </a></div>
-                        <div className="pg-completion"> {lesson.completion}% </div>    
+                    <div key={index} className="pg-block">
+                        <h1 className="pg-topic"> <img className="pg-logo" src={`${lesson.logo}`} />
+                            <a className="link" href="#"> {lesson.Topic.toUpperCase()} </a>
+                        </h1>
+                        <div className="pg-completion"> {lesson.completion}% </div>
                         <div className="pg-week"> WEEK: {lesson.dayNumber}</div>
                         <div className="pg-day"> DAY: {lesson.dayNumber}</div>
                     </div>
                 )
-                })
+            })
             }
-
-
-            
         </div>
     )
 

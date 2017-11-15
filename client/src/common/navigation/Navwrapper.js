@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, LinkProps, Link } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
 import StudentHome from '../../components/home/student/StudentHome'
@@ -13,19 +13,18 @@ class Navwrapper extends Component {
         super(props);
         this.state = {
             user: props.user
-        }
+        }   
     }
 
 
 
-
     render() {
-
         const { props } = this;
-
         const RouteName = ({ match }) => {
             switch (match.params.routeName) {
+                
                 case 'home':
+                console.log(match)
                 if (this.state.user.RoleId === 0){
                     return <StudentHome user={this.state.user}/>
                 }
@@ -33,12 +32,12 @@ class Navwrapper extends Component {
                     return <TeacherHome user={this.state.user}/>
                 }
                 case 'lessons':
-                    return <Lessons user={this.state.user}/>
-                case 'lesson':
-                    return <Lesson user={this.state.user}/>
+                    return <Lessons user={this.state.user} match={match}/>
+
+                // case 'lesson':
+                //     return <Lesson user={this.state.user}/>
             }
         }
-
 
 
         return (
@@ -52,7 +51,16 @@ class Navwrapper extends Component {
 
                     </div>
                     <div className="col-xs-10">
+
+
+                        <Route exact path='/lads' render={(props)=>(this.state.user.RoleId === 0 
+                            ? (<StudentHome user={this.state.user}/>) 
+                            : (<TeacherHome user={this.state.user}/>))} />
+
+
+                        <Route path="/lads/lesson/:id" component={Lesson} />
                         <Route path={`${props.newprops.match.path}/:routeName`} component={RouteName} />
+                       
 
                     </div>
 

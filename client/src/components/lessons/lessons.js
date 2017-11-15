@@ -60,6 +60,7 @@ class Lessons extends Component {
     }
 
     render() {
+    
         let weekOrTopic = () => {
             if (this.state.mode == true) {
                 return Object.keys(this.state.topics).map((topic, index) => (
@@ -76,10 +77,10 @@ class Lessons extends Component {
             <div className="align">
                 <div className="btn-wrapper">
                     <div className=" btn-sort-weeks-wrapper">
-                        <button type="button" className="btn btn-info btn-sort-weeks" onClick={this.renderWeeks}>SORT BY WEEKS !</button>
+                        <button type="button" className="btn btn-sort-weeks" onClick={this.renderWeeks}>SORT BY WEEKS !</button>
                     </div>
                     <div className=" btn-sort-topics-wrapper">
-                        <button type="button" className="btn btn-info btn-sort-topics" onClick={this.renderTopics}>SORT BY TOPICS !</button>
+                        <button type="button" className="btn btn-sort-topics" onClick={this.renderTopics}>SORT BY TOPICS !</button>
                     </div>
                 </div>
                 <div className="row week-topic-wrapper">

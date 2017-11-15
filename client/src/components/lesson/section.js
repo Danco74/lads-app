@@ -34,7 +34,9 @@ class Section extends Component {
 
         return (
             <div className='section'>
-                {this.header()}
+                <div className="section-header">
+                    {this.header()}
+                </div>
                 {displayContent}
                 <hr />
             </div>

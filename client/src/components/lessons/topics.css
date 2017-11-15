@@ -3,22 +3,23 @@
     border-color: #ff767a;
     border-radius: 12%;
     width: 20%;
-    margin: 1%;
+    height: 210px;
+    margin: 5%;
+    margin-left: -5px;
     padding: 1%;
-    display: inline-block;
+    display: inline-grid;
     text-align: center;
     font-size: 20px;
 }
 
 .subtopic {
     font-size: 20px;
-    margin: 0 !important;
+    color:#d7b24f;
+
 }
 
 .week-topic-wrapper {
     margin-left:0px
 }
 
-.topics-wrapper{
-    margin-left:-5px;
-}
+

@@ -10,23 +10,20 @@ class Day extends Component {
 
 
     render() {
-        // const {description,img,name,tempCelsius} = this.props.city;
-        // console.log(this.props.text)
 
 
         return (
 
             <div className="day-wrapper">
-                <div className="day-header">DAY {this.props.day}</div>
+                <h1 className="day-header">DAY {this.props.day}</h1>
                 <br />
                 <div className="day-topic">
                     {this.props.days.map((day, index) =>
                         <div key={index}>
-                            {/* <Link to={`${this.props.routeprops.match.url}/${day.Topic}`}> */}
-                                <a href="#" className="weekTopic">
-                                    {day.Topic}
-                                </a>
-                            {/* </Link> */}
+                        <Link className="weekTopic link" to="/lads/lesson/1" >
+                        {/* <Link to={`${this.props.routeprops.url}/`} > */}
+                                    {day.Topic.toUpperCase()}
+                            </Link>
 
                         </div>)}
                 </div>
