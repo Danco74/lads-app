@@ -69,7 +69,7 @@ class Home extends Component {
 
     render() {
         return (
-        <div className="sh-wrapper">
+        <div className="sh-wrapper col-xs-offset-1">
             <br/>
             <div className="row">
                 <h1 className="sh-hello">HELLO, {this.state.username.toLocaleUpperCase()}!</h1>

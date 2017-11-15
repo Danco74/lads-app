@@ -2,7 +2,7 @@ import React from 'react';
 import Page404 from './common/404';
 import Login from './common/login/Login.js';
 import Navwrapper from './common/navigation/Navwrapper';
-import { Route, Redirect } from 'react-router-dom';
+import { HashRouter, Router,Route, Redirect } from 'react-router-dom';
 
 const axios = require('axios');
 
@@ -49,19 +49,27 @@ class Routes extends React.Component {
       return (
         <div className="container">
   
-  
+  <HashRouter>
           <Route exact path="/"
                render={() => (!this.isLoggedIn()
                  ? (<Login />)
                  : (<Redirect to="/lads" />))} />
 
+      
+   
+          {/* <Route path="*" component={Page404} /> */}
+      </HashRouter>
+
+      <HashRouter>
+     
           <Route path="/lads"
                render={(props) => (!this.isLoggedIn()
                  ? (<Login />)
                  : (<Navwrapper newprops={props}/>))} /> 
 
    
-          <Route path="*" component={Page404} />
+        
+      </HashRouter>
 
         </div>
       );
