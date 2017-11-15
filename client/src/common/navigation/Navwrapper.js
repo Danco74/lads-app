@@ -4,6 +4,7 @@ import Navbar from './Navbar'
 import Sidebar from './Sidebar'
 import Home from '../../components/home/student/StudentHome'
 import Lessons from '../../components/lessons/lessons'
+import Lesson from '../../components/lesson/lesson'
 
 class Navwrapper extends Component {
 
@@ -12,7 +13,7 @@ class Navwrapper extends Component {
 
         return (
             <div className="">
-                    <Navbar />
+                <Navbar />
 
                 <div className="row">
                     <div className="col-xs-2" id="sidebarBox">
@@ -39,6 +40,8 @@ const RouteName = ({ match }) => {
             return <Home />
         case 'lessons':
             return <Lessons />
+        case 'lesson':
+            return <Lesson />
     }
 }
 
