@@ -20,7 +20,7 @@ var UserSqlHelper = {
             },
     //Get user role info
     getUserRoleInfo: function (id, callback){
-        return db.query("select users.id as userid,roles.id as roleid from users inner join roles on users.RoleId = roles.id where users.id = ?;",[id], callback);
+        return db.query("select * from users inner join roles on users.RoleId = roles.id where users.id = ?;",[id], callback);
     },
     //Add user
     addUser: function (user, callback) {

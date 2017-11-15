@@ -86,9 +86,9 @@ app.post('/api/login', function(req, res, next) {
 });
 
 
-app.get('/*', function (req, res) {
-  res.send(path.join(__dirname, '/server/static/index.html'));
-});
+// app.get('/*', function (req, res) {
+//   res.send(path.join(__dirname, '/server/static/index.html'));
+// });
 
 
 

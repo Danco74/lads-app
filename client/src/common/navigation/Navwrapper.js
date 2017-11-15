@@ -12,7 +12,7 @@ class Navwrapper extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            authorization: props.authorization
+            user: props.user
         }
     }
 
@@ -26,16 +26,16 @@ class Navwrapper extends Component {
         const RouteName = ({ match }) => {
             switch (match.params.routeName) {
                 case 'home':
-                    if (this.state.authorization === 0) {
-                        return <StudentHome />
-                    }
-                    else if (this.state.authorization === 1) {
-                        return <TeacherHome />
-                    }
+                if (this.state.user.RoleId === 0){
+                    return <StudentHome user={this.state.user}/>
+                }
+                else if (this.state.user.RoleId === 1) {
+                    return <TeacherHome user={this.state.user}/>
+                }
                 case 'lessons':
-                    return <Lessons />
+                    return <Lessons user={this.state.user}/>
                 case 'lesson':
-                    return <Lesson />
+                    return <Lesson user={this.state.user}/>
             }
         }
 
@@ -43,7 +43,7 @@ class Navwrapper extends Component {
 
         return (
             <div className="">
-                <Navbar />
+                <Navbar  user={this.state.user}/>
 
                 <div className="row">
                     <div className="col-xs-2" id="sidebarBox">
