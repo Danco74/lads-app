@@ -9,19 +9,20 @@ class Topics extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
-            <div className="topics-wrapper">
+           
                 <div className="topic-wrapper">
-                    <h1 className="topicsHead">{this.props.topicName}</h1>
+                    <h1 className="topicsHead">{this.props.topicName.toUpperCase()}</h1>
                     {this.props.lessons.map((lesson, index) =>
                         <div key={index}>
-                            <Link className="subtopic" to={`/lads/lesson/lesson/${lesson.id}`}>
+                            <Link className="subtopic link" to={`/lads/lesson/lesson/${lesson.id}`}>
                                 {lesson.Title}
                             </Link>
                             {/* </Link> */}
                         </div>)}
                 </div>
-            </div>
+
 
         )
     }

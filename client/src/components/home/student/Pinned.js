@@ -7,7 +7,7 @@ function PinnedLessons(props) {
             {props.pinned.map((pinned, index) => {
                 return (
                     <div key={index} className="pn-block">
-                        <div className="pn-topic"> <a href="#"> {pinned.Topic} </a></div>
+                        <h1 className="pn-topic"> <a className="link" href="#"> {pinned.Topic.toUpperCase()} </a></h1>
                         <img className="pn-logo" src={`${pinned.logo}`}/>
                         <div className="pn-week"> WEEK: {pinned.dayNumber}</div>
                         <div className="pn-day"> DAY: {pinned.dayNumber}</div>

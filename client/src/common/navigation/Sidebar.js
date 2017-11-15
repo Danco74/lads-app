@@ -13,7 +13,7 @@ class Sidebar extends Component {
 			<ul id="sidebar-nav">
 
 				<li>
-					<Link to={`${this.props.sideprops.match.url}/home`}>
+					<Link className="link" to={`${this.props.sideprops.match.url}/home`}>
 
 						<i className="fa fa-object-group fa-lg" aria-hidden="true" />
 						<span className="sidebar-title">Dashboard</span>
@@ -21,7 +21,7 @@ class Sidebar extends Component {
 				</li>
 
 				<li>
-					<Link to={`${this.props.sideprops.match.url}/lessons`}>
+					<Link className="link" to={`${this.props.sideprops.match.url}/lessons`}>
 						<i className="fa fa-graduation-cap fa-lg" aria-hidden="true" />
 						<span className="sidebar-title">Lessons</span>
 						<i className="fa fa-chevron-right" />
@@ -29,7 +29,7 @@ class Sidebar extends Component {
 				</li>
 
 				<li>
-					<Link to={`${this.props.sideprops.match.url}/lesson`}>
+					<Link className="link" to={`${this.props.sideprops.match.url}/lesson`}>
 						<i className="fa fa-calendar-check-o fa-lg" aria-hidden="true" />
 						<span className="sidebar-title">Calender</span>
 					</Link>

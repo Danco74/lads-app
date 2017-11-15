@@ -3,10 +3,15 @@
     border-color: #ff767a;
     border-radius: 12%;
     width: 20%;
-    margin: 1%;
+    height: 210px;
+    margin-right:5%;
     padding: 1%;
-    display: inline-block;
+    display: inline-grid;
     text-align: center;
     font-size: 20px;
 
+}
+
+.weekTopic{
+    font-size:20px;
 }

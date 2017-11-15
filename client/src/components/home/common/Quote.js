@@ -21,7 +21,7 @@ class Quote extends Component {
         axios
         .get('http://localhost:3000/api/lessons/misc/quote')
         .then(function (response) {
-            console.log("GET QUOTE---> " + response);
+
           if (response.data) {
             that.setState({ quote: response.data[0].Text});
           } else {
@@ -58,7 +58,10 @@ class Quote extends Component {
         }
 
         return (
-            <div className="daily-quote" onBlur={this.updateQuote} contentEditable={isEditable}>"{this.state.quote.toUpperCase()}"</div>
+        
+          
+            <div className="daily-quote" onBlur={this.updateQuote} contentEditable={isEditable}> <i className="fa fa-quote-left" aria-hidden="true" />{this.state.quote.toUpperCase()}<i className="fa fa-quote-right" aria-hidden="true" /></div>
+        
         )
     }
 

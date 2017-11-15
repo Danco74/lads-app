@@ -4,9 +4,10 @@
   top:10%;
   right:5%;
 }
+
   .btn-group button {
     margin-top:10%;
-    background-color: rgb(58, 102, 190); 
+    background-color: #1e3568; 
     box-shadow:0 3px 25px 5px #807f7f ;
     border: none;
     cursor: pointer; 
@@ -16,12 +17,13 @@
     display: block; 
     transition-property: width,height;
     transition-duration: .5s;
-    color: white;
+    color:whitesmoke;
   }
   
   /* Add a background color on hover */
+
   .btn-group button:hover {
-    background-color:rgb(81, 139, 255); 
+    background-color:#27488f ; 
     width:65px;
     height:65px;
   }

@@ -5,5 +5,9 @@
 }
 
 .lesson-section-header{
-    
+    margin: 0 2%;
+}
+
+.section-header .selected{
+    width:fit-content;
 }

@@ -10,13 +10,10 @@
 }
 .header{
     margin:0 auto;
-    /* border:1px solid green; */
     width:70%;
 }
 .content-container{
-    margin:0 auto;
-   
-    /* border:1px solid orange; */
+    margin: 0 5%;
     width:70%;
 }
 
@@ -31,4 +28,15 @@ hr{
 	background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
     border: 0;
     width:70%;
+    margin:2% 5%;
+}
+.lesson-container{
+    width:110%;
+}
+
+.lesson-title{
+    color:#ff767a
+}
+.lesson-title .selected{
+    width:fit-content;
 }
