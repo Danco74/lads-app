@@ -4,22 +4,31 @@
 }
 
 .pg-block {
-    
     border-style: solid;
-    /* border-width: thin; */
-    border-color: gray;
-    border-radius: 10%;
+    border-color: #ff767a;
+    border-radius: 12%;
     width: 20%;
-    /* height: 100px; */
     margin: 1%;
     padding: 1%;
     display: inline-block;
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .pg-completion {
     font-weight: bold;
     color:#5CBDDE;
-    font-size: 50px;
+    font-size: 45px;
+}
+
+.pg-logo{
+    position: absolute;
+    left: -9px;
+    top: 3px;
+    width: 38%;
+    height: 100%;
+}
+
+.pg-topic{
+    position:relative;
 }

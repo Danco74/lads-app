@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Quote from "../common/Quote";
-import './teacherHome.css';
+import './TeacherHome.css';
 
 class TeacherHome extends Component {
     constructor(props) {

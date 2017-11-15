@@ -1,0 +1,34 @@
+/*lesson component styles*/
+.code{
+    color:white;
+    background-color:black;
+    font-size: 18px;
+}
+
+.paragraph{
+    color:black;
+}
+.header{
+    margin:0 auto;
+    /* border:1px solid green; */
+    width:70%;
+}
+.content-container{
+    margin:0 auto;
+   
+    /* border:1px solid orange; */
+    width:70%;
+}
+
+/* hr{
+    border-top:1px solid rgb(194, 194, 194);
+    width:70%;
+    border-radius:15px;
+
+} */
+hr{
+	height: 6px;
+	background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
+    border: 0;
+    width:70%;
+}

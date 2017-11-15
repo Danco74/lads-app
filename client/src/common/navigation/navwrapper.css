@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates');
+@import url('https://fonts.googleapis.com/css?family=Barlow');
+/* Navbar CSS */
+html, body{
+    /* font-family: 'Montserrat Alternates', sans-serif; */
+    font-family: 'Barlow', sans-serif;
+    height: 100%;
+}
+#logo{
+    background-color:#5ba4e2 ;
+    color: white;
+    font-family: 'Lobster';
+    font-size: 30px;
+  }
+  #settings{
+    font-size: 18px;
+    padding:25px;
+    text-align:right;
+
+  }
+  .columns{
+    overflow: hidden;
+    background-color: #84d7d8;
+    height: 70px;
+ 
+  }
+.navbar-lads{
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Cabin', sans-serif;
+  }
+
+  #logo a.navbar-lads {
+      font-family: 'Lobster';
+      font-size: 30px;
+      text-decoration: none;
+
+  }
+  .navbar-user{
+    padding:0 35px;
+    color: #1e3568;
+  }
+  .navbar-user:hover{
+      text-decoration: none;
+      color:#5ba4e2;
+
+  }
+
+  .container{
+      margin:0;
+      padding:0;
+      width:100%;
+      min-height:100%;
+      overflow:hidden;
+     }
+  /*bootstrap sidebar classes styles*/
+ #sidebar-container {
+    /* padding-top: 50px; */
+    padding-left: 0;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+/* @media (min-width: 992px) {
+    #sidebar-container {
+        padding-left: 225px;
+    }
+    #sidebar-container #sidebar-wrapper {
+        width: 100px;
+    }
+} */
+
+/* Sidebar CSS */
+@import url('https://fonts.googleapis.com/css?family=Cabin|Lobster');
+
+#sidebarBox { 
+    background:  #d2e8fe;
+    margin-bottom:-9999px;
+    padding-bottom:9999px;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+#sidebar-nav {
+    font-size: 14px; 
+    list-style: none; 
+    padding-left:20px;
+  
+}
+ #sidebar-nav li {
+    line-height: 70px;
+   
+    font-family: 'Cabin', sans-serif;
+    font-size: 16px;
+    border-bottom: 2px solid #DEDEDE;
+  
+}
+.sidebar-title{
+    padding:20px;
+    text-align: center;
+    color: #1e3568;
+    text-decoration: none;
+    
+}
+
+
