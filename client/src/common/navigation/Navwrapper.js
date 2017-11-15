@@ -6,6 +6,7 @@ import StudentHome from '../../components/home/student/StudentHome'
 import TeacherHome from '../../components/home/teacher/TeacherHome'
 import Lessons from '../../components/lessons/lessons'
 import Lesson from '../../components/lesson/lesson'
+import './navwrapper.css'
 
 class Navwrapper extends Component {
     constructor(props) {
@@ -61,33 +62,5 @@ class Navwrapper extends Component {
         )
     }
 }
-
-
-        export default Navwrapper;
-// const RouteName = ({ match }) => {
-//     switch (match.params.routeName) {
-//         case 'home':
-//             return <Home />
-//         case 'lessons':
-//             return <Lessons match={match}/>
-//         case 'lesson':
-//             return <Lesson />
-//     }
-// }
-
-// const RouteName = ({ match }) => {
-//     switch (match.params.routeName) {
-//         case 'home':
-//         if (this.state.authorization === 0){
-//             return <StudentHome />
-//         }
-//         else if (this.state.authorization === 1) {
-//             return <TeacherHome />
-//         }
-//         case 'lessons':
-//             return <Lessons />
-//         case 'lesson':
-//             return <Lesson />
-//     }
-// }
+export default Navwrapper;
 
