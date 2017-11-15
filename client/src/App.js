@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import Routes from './Routes';
+import Routes from './routes';
 import { BrowserRouter } from 'react-router-dom';
 import Navwrapper from './common/navigation/Navwrapper'
 import Login from './common/login/Login.js'
