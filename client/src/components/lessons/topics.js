@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
+import './topics.css'
 
 
 class Topics extends Component {
@@ -10,17 +11,17 @@ class Topics extends Component {
     render() {
         return (
 
-            <div className="topicsContainer col-sm-3" >
-                <div className="topicBox">
+            
+                <div className="topic-wrapper">
                     <h1 className="topicsHead">{this.props.topicName}</h1>
-                    {this.props.topics.map((topic, index) =>
-                        <div key={index} className="topicsList">
-                            <a href="#">
-                                {topic}
+                    {this.props.lessons.map((lesson, index) =>
+                        <div key={index}>
+                            <a className="subtopic">
+                                {lesson.Title}
                             </a>
                         </div>)}
                 </div>
-            </div>
+           
         )
     }
 };
