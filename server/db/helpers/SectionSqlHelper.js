@@ -31,7 +31,7 @@ var SectionSqlHelper = {
     },
     //update section by id
     updateSection: function (id, section, callback) {
-        return db.query("update sections set Header=?, where Id=?", [
+        return db.query("update sections set Header=? where Id=?", [
             section.header, id
         ], callback);
     }

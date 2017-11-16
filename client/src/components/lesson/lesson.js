@@ -38,7 +38,8 @@ class Lesson extends Component {
             contents: []
         }
         // /:lessonId/sections
-        var url = 'http://localhost:3000/api/lessons/1/sections'
+        let tempArray = this.props.match.pathname.split('/');
+        var url = `http://localhost:3000/api/lessons/${tempArray[tempArray.length-1]}/sections`
 
         axios.post(url, newSection) //<==Calling axios with a get request and pass the url
             .then(response => {
@@ -88,8 +89,8 @@ class Lesson extends Component {
         }
 
         // /:lessonId/sections/:sectionId/content
-        var url = `http://localhost:3000/api/lessons/1/sections/${this.state.sections[this.state.status.currentSection].sectionId}/content`
-        console.log(url)
+        let tempArray = this.props.match.pathname.split('/');
+        var url = `http://localhost:3000/api/lessons/${tempArray[tempArray.length-1]}/sections/${this.state.sections[this.state.status.currentSection].sectionId}/content`
 
         axios.post(url, newContent) //<==Calling axios with a get request and pass the url
             .then(response => {
@@ -234,7 +235,27 @@ class Lesson extends Component {
         }
 
         else {
-            this.setState((prevState) => { return { [prevState.title]: prevState.title = newText } })
+            // /:id/title
+            let newLessonStatus = {
+                topic: "",
+                title: newText,
+                logoUrl: "",
+                description: ""
+            }
+            let tempArray = this.props.match.pathname.split('/');
+            var url = `http://localhost:3000/api/lessons/${tempArray[tempArray.length-1]}/title`
+            axios.put(url, newLessonStatus)
+            .then(response => {
+                console.log(response)
+                if (!response.data.affectedRows || response.data.affectedRows === 0) {
+                    console.log('Nothing changed in the DB')
+                    return;
+                }
+                this.setState((prevState) => { return { [prevState.title]: prevState.title = newText } })
+            })
+            .catch(error => {
+                console.log('Error fetching and parsing data', error);
+            });
         }
         this.toggleEditing(sectionIndex, contentIndex);
     }
@@ -319,7 +340,6 @@ class Lesson extends Component {
     componentDidMount() {
         //reeive db stuff
         let tempArray = this.props.match.pathname.split('/');
-        console.log(tempArray[tempArray.length-1])
         var url = `http://localhost:3000/api/lessons/${tempArray[tempArray.length-1]}`
 
         axios.get(url) //<==Calling axios with a get request and pass the url

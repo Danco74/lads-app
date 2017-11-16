@@ -201,6 +201,32 @@ router.get('/:topicId', function (req, res) {
         });
 })
 
+// update lesson by id
+router.put('/:id', function (req, res) {
+    LessonHelper
+        .updateLesson(req.params.id, req.body, function (err, rows) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(rows);
+            }
+
+        });
+})
+
+// update lesson title by id
+router.put('/:id/title', function (req, res) {
+    LessonHelper
+        .updateLessonTitle(req.params.id, req.body, function (err, rows) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(rows);
+            }
+
+        });
+})
+
 //######Section routes######## ------------------------------- Add section
 router.post('/:lessonId/sections', function (req, res) {
     SectionHelper

@@ -34,12 +34,19 @@ var LessonSqlHelper = {
     },
     //delete lesson by id
     deleteLesson: function (id, callback) {
-        return db.query("delete from lesson where Id=?", [id], callback);
+        return db.query("delete from lessons where Id=?", [id], callback);
     },
     //updaate lesson
     updateLesson: function (id, lesson, callback) {
-        return db.query("update task set Topic=?,Description=?,LogoUrl=? where Id=?", [
-            lesson.name, lesson.description, lesson.logoUrl
+        return db.query("update lessons set Topic=?, Title=?, Description=?,LogoUrl=? where Id=?", [
+            lesson.topic, lesson.title, lesson.description, lesson.logoUrl, id
+        ], callback);
+    },
+
+    //updaate lesson title
+    updateLessonTitle: function (id, lesson, callback) {
+        return db.query("update lessons set Title=? where Id=?", [
+            lesson.title, id
         ], callback);
     }
 
