@@ -40,3 +40,9 @@ hr{
 .lesson-title .selected{
     width:fit-content;
 }
+
+.lesson-rating{
+    color: #d7b24f;
+    left: 30%;
+    position: relative;
+}

@@ -11,3 +11,10 @@
 .section-header .selected{
     width:fit-content;
 }
+
+.student-completion{
+    color: green;
+    position: relative;
+    left: 80%;
+    top: 0.5em;
+}

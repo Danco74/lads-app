@@ -428,6 +428,15 @@ class Lesson extends Component {
     }
 
     title() {
+        if(this.props.user.RoleId===0) {
+            return (
+                <div className={`lesson-title`}>
+                    <h1>
+                        {this.state.title.trim() || '???'}
+                    </h1>
+                </div> 
+            )
+        }
         if (this.state.status.currentSection === undefined && this.state.status.currentContent === undefined && this.state.status.editing === true) {
             return <Form text={this.state.title} editContent={this.editContent} sectionIndex={undefined} contentIndex={undefined} />
         }
@@ -439,20 +448,24 @@ class Lesson extends Component {
     }
 
     render() {
-        console.log(this.props)
         var displaySections = this.state.sections.map((section, index) => {
             if(this.props.user.RoleId===0){ // student. teacher===1
                 return <Section
                 key={index} section={section} sectionIndex={index} 
-                 status={this.state.status} ></Section>
+                 status={this.state.status} user={this.props.user}></Section>
             }
             else{
                 return <Section
-                key={index} section={section} sectionIndex={index} toggleEditing={this.toggleEditing}
+                key={index} section={section} sectionIndex={index} toggleEditing={this.toggleEditing} user={this.props.user}
                 editContent={this.editContent} status={this.state.status} selectHighlight={this.selectHighlight}></Section>
             }
            
         })
+
+        let displayToolbox = (this.props.user.RoleId===0 ? '' : <Toolbox addSection={this.addSection} addContent={this.addContent}
+                changeContentType={this.changeContentType} removeSelected={this.removeSelected} repositionSelected={this.repositionSelected} />)
+        let displayStars = (this.props.user.RoleId===0 ? <div className='lesson-rating'><i className="fa-3x fa fa-star" aria-hidden="true"></i><i className="fa fa-star fa-3x" aria-hidden="true"></i><i className="fa fa-star fa-3x" aria-hidden="true"></i><i className="fa fa-star-o fa-3x" aria-hidden="true"></i><i className="fa fa-star-o fa-3x" aria-hidden="true"></i></div> : '')
+
         // let formHtml = <Form toggleNew={this.toggleElementAdding} addElement={this.addSection} />;
         // let form = (this.state.status.elementAdding ? formHtml : '');
         return (
@@ -460,8 +473,8 @@ class Lesson extends Component {
             <span className="lesson-title">{this.title()}</span>
                 {displaySections}
 
-                <Toolbox addSection={this.addSection} addContent={this.addContent}
-                    changeContentType={this.changeContentType} removeSelected={this.removeSelected} repositionSelected={this.repositionSelected} />
+                {displayToolbox}
+                {displayStars}
                 {/* {form} */}
             </div>
         )
