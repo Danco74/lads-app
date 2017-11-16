@@ -35,7 +35,8 @@ class Lesson extends Component {
     addSection() {
         let newSection = {
             header: '',
-            contents: []
+            contents: [],
+            viewIndex: (this.state.status.currentSection >=0 ? this.state.status.currentSection : 0 )
         }
         // /:lessonId/sections
         let tempArray = this.props.match.pathname.split('/');

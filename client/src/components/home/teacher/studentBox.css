@@ -12,36 +12,36 @@
 }
 
 .sb-color-0 {
-    background: #FF0000;
+    background: #FF3300;
 }
 
 .sb-color-1 {
-    background: #FF3300 ;
+    background: #ff767a;
 }
 .sb-color-2 {
-    background: #ff6600 ;
+    background: #ff767a ;
 }
 .sb-color-3 {
-    background: #ff9900 ;
+    background:  #FFCC00 ;
 }
 .sb-color-4 {
-    background: #FFCC00 ;
+    background: #d7b24f ;
 }
 .sb-color-5 {
-    background: #FFFF00 ;
+    background: #d7b24f ;
 }
 .sb-color-6 {
-    background: #ccff00;
+    background: #22b39b;
 }
 .sb-color-7 {
     background: #99ff00;
 }
 .sb-color-8 {
-    background: #66ff00;
+    background:#25c161;
 }
 .sb-color-9 {
-    background: #33ff00;
+    background: #25c161;
 }
 .sb-color-10 {
-    background: rgba(59, 255, 11, 0.58);
+    background:#2be170
 }

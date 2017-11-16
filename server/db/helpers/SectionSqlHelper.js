@@ -5,7 +5,7 @@ var SectionSqlHelper = {
     addSection: function (lessonId, section, callback) {
         return db.query("Insert into sections set Header=?,LessonId=?,ViewIndex=?", [
             // section.header, lessonId, section.index
-            section.header,1,1
+            section.header,lessonId,section.viewIndex
         ], callback);
     },
     //Get all sections

@@ -13,8 +13,21 @@
 }
 
 .student-completion{
-    color: green;
+    color:grey;
     position: relative;
     left: 80%;
     top: 0.5em;
+    transition-property:font-size;
+    transition-duration: .3s;
+    
 }
+
+.student-completion:hover{
+    color:#22b39b;
+    position: relative;
+    left: 80%;
+    top: 0.5em;
+    font-size:3.5em;
+    cursor: pointer;
+}
+
