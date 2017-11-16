@@ -20,7 +20,7 @@ class Day extends Component {
                 <div className="day-topic">
                     {this.props.days.map((day, index) =>
                         <div key={index}>
-                        <Link className="weekTopic link" to={`/lads/lesson/${lesson.id}`} >
+                        <Link className="weekTopic link" to={`/lads/lesson/${day.id}`} >
                         {/* <Link to={`${this.props.routeprops.url}/`} > */}
                                     {day.Topic.toUpperCase()}
                             </Link>

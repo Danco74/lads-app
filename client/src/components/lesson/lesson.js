@@ -318,11 +318,14 @@ class Lesson extends Component {
 
     componentDidMount() {
         //reeive db stuff
-        var url = 'http://localhost:3000/api/lessons/1'
+        let tempArray = this.props.match.pathname.split('/');
+        console.log(tempArray[tempArray.length-1])
+        var url = `http://localhost:3000/api/lessons/${tempArray[tempArray.length-1]}`
 
         axios.get(url) //<==Calling axios with a get request and pass the url
             .then(response => {
                 //Use the response here to update
+                console.log(response)
                 response.data.status = { currentSection: undefined, currentContent: undefined, editable: false };
                 this.setState(response.data);
                 console.log(this.state)
@@ -416,11 +419,19 @@ class Lesson extends Component {
     }
 
     render() {
+        console.log(this.props)
         var displaySections = this.state.sections.map((section, index) => {
-            return <Section
+            if(this.props.user.RoleId===0){ // student. teacher===1
+                return <Section
+                key={index} section={section} sectionIndex={index} 
+                 status={this.state.status} ></Section>
+            }
+            else{
+                return <Section
                 key={index} section={section} sectionIndex={index} toggleEditing={this.toggleEditing}
-                editContent={this.editContent} status={this.state.status} selectHighlight={this.selectHighlight}
-            ></Section>
+                editContent={this.editContent} status={this.state.status} selectHighlight={this.selectHighlight}></Section>
+            }
+           
         })
         // let formHtml = <Form toggleNew={this.toggleElementAdding} addElement={this.addSection} />;
         // let form = (this.state.status.elementAdding ? formHtml : '');

@@ -54,7 +54,12 @@ router.get('/:id', function (req, res) {
 
                 var lesson = {};
 
+                
                 lesson.title = rows[0].title;
+                
+                if(!rows[0].title) {
+                    lesson.title = ""
+                }
 
                 var sections = [];
 
@@ -66,7 +71,7 @@ router.get('/:id', function (req, res) {
                         contents: []
                     }
 
-                    if (getSectionIndex(rows[i].sectionId) == -1) {
+                    if (section.sectionId && getSectionIndex(rows[i].sectionId) == -1) {
 
                         sections.push(section)
                     }

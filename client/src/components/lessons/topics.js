@@ -9,7 +9,7 @@ class Topics extends Component {
     }
 
     render() {
-        console.log(this.props)
+      
         return (
            
                 <div className="topic-wrapper">

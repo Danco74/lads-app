@@ -13,7 +13,7 @@ class Navwrapper extends Component {
         super(props);
         this.state = {
             user: props.user
-        }   
+        }
     }
 
 
@@ -22,26 +22,25 @@ class Navwrapper extends Component {
         const { props } = this;
         const RouteName = ({ match }) => {
             switch (match.params.routeName) {
-                
+
                 case 'home':
-                console.log(match)
-                if (this.state.user.RoleId === 0){
-                    return <StudentHome user={this.state.user}/>
-                }
-                else if (this.state.user.RoleId === 1) {
-                    return <TeacherHome user={this.state.user}/>
-                }
+                    console.log(match)
+                    if (this.state.user.RoleId === 0) {
+                        return <StudentHome user={this.state.user} />
+                    }
+                    else if (this.state.user.RoleId === 1) {
+                        return <TeacherHome user={this.state.user} />
+                    }
                 case 'lessons':
-                    return <Lessons user={this.state.user}/>
-                // case 'lesson':
-                //     return <Lesson id={match.params} user={this.state.user}/>
+                    return <Lessons user={this.state.user} />
+             
             }
         }
 
 
         return (
             <div className="">
-                <Navbar  user={this.state.user}/>
+                <Navbar user={this.state.user} />
 
                 <div className="row">
                     <div className="col-xs-2" id="sidebarBox">
@@ -50,13 +49,16 @@ class Navwrapper extends Component {
 
                     </div>
                     <div className="col-xs-10">
-                        <Route path="/lads/lesson/:id" component={Lesson} />
+
                         <Route exact path={`${props.newprops.match.path}/:routeName`} component={RouteName} />
 
 
-                        <Route exact path='/lads' render={(props)=>(this.state.user.RoleId === 0 
-                            ? (<StudentHome user={this.state.user}/>) 
-                            : (<TeacherHome user={this.state.user}/>))} />
+                        <Route exact path='/lads' render={(props) => (this.state.user.RoleId === 0
+                            ? (<StudentHome user={this.state.user} />)
+                            : (<TeacherHome user={this.state.user} />))} />
+
+                        {<Route path="/lads/lesson/:id" render={()=>(<Lesson match={props.newprops.location} user={this.state.user}/>)} />}
+                        {/* <Route path="/lads/lesson/:id" component={Lesson} /> */}
 
                     </div>
 
