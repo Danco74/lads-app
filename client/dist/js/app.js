@@ -5974,7 +5974,7 @@ var Quote = function (_Component) {
         key: 'componentWillMount',
         value: function componentWillMount() {
             var that = this;
-            _axios2.default.get('http://localhost:3000/api/lessons/misc/quote').then(function (response) {
+            _axios2.default.get('/api/lessons/misc/quote').then(function (response) {
 
                 if (response.data) {
                     that.setState({ quote: response.data[0].Text });
@@ -5987,7 +5987,7 @@ var Quote = function (_Component) {
         key: 'updateQuote',
         value: function updateQuote(e) {
             var that = this;
-            _axios2.default.put('http://localhost:3000/api/lessons/misc/quote', { text: e.target.textContent }).then(function (response) {
+            _axios2.default.put('/api/lessons/misc/quote', { text: e.target.textContent }).then(function (response) {
                 console.log("POST QUOTE---> " + response);
                 if (response.data) {
                     console.log("saved to db");
@@ -25708,7 +25708,7 @@ var Routes = function (_React$Component) {
 
       var that = this;
 
-      axios.get('http://localhost:3000/user/validate').then(function (response) {
+      axios.get('/user/validate').then(function (response) {
         if (response.data) {
           that.setState({ isLoggedIn: true, wasServerQueried: true, user: response.data });
         } else {
@@ -25970,7 +25970,7 @@ var LoginForm = function (_Component) {
                 ),
                 _react2.default.createElement(
                     'form',
-                    { className: 'form-login', method: 'post', action: 'http://localhost:3000/api/login' },
+                    { className: 'form-login', method: 'post', action: '/api/login' },
                     _react2.default.createElement(
                         'div',
                         { className: 'form-group' },
@@ -31407,7 +31407,7 @@ var TeacherHome = function (_Component) {
         key: 'componentWillMount',
         value: function componentWillMount() {
             var that = this;
-            _axios2.default.get('http://localhost:3000/api/students').then(function (response) {
+            _axios2.default.get('api/students').then(function (response) {
                 if (response.data) {
                     that.setState({ students: response.data });
                 }
@@ -31793,13 +31793,13 @@ var Lessons = function (_Component) {
 
             var that = this;
 
-            _axios2.default.get('http://localhost:3000/api/lessons/sorted/byweeks').then(function (response) {
+            _axios2.default.get('/api/lessons/sorted/byweeks').then(function (response) {
                 if (response.data) {
                     that.setState({ weeks: response.data });
                 }
             });
 
-            _axios2.default.get('http://localhost:3000/api/lessons/sorted/bytopic').then(function (response) {
+            _axios2.default.get('/api/lessons/sorted/bytopic').then(function (response) {
                 if (response.data) {
                     that.setState({ topics: response.data });
                 }

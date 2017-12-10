@@ -19,7 +19,7 @@ class Quote extends Component {
     componentWillMount() {
         var that = this;
         axios
-        .get('http://localhost:3000/api/lessons/misc/quote')
+        .get('/api/lessons/misc/quote')
         .then(function (response) {
 
           if (response.data) {
@@ -35,7 +35,7 @@ class Quote extends Component {
     updateQuote(e){
      var that = this;
         axios
-        .put('http://localhost:3000/api/lessons/misc/quote',{text: e.target.textContent})
+        .put('/api/lessons/misc/quote',{text: e.target.textContent})
         .then(function (response) {
             console.log("POST QUOTE---> " + response);
           if (response.data) {

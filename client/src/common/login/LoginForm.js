@@ -9,7 +9,7 @@ class LoginForm extends Component {
         return (
             <div className="loginForm">
                 <h1 className="head-login">Login</h1>
-                <form className="form-login" method="post" action="http://localhost:3000/api/login">
+                <form className="form-login" method="post" action="/api/login">
                     <div className="form-group">
                         <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
                         <input type="text" name="username" className="form-control" id="email" placeholder="E-Mail Address" />

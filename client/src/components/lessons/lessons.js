@@ -26,7 +26,7 @@ class Lessons extends Component {
         let that = this;
 
         axios
-            .get('http://localhost:3000/api/lessons/sorted/byweeks')
+            .get('/api/lessons/sorted/byweeks')
             .then(function (response) {
                 if (response.data) {
                     that.setState({ weeks: response.data });
@@ -35,7 +35,7 @@ class Lessons extends Component {
             });
 
         axios
-            .get('http://localhost:3000/api/lessons/sorted/bytopic')
+            .get('/api/lessons/sorted/bytopic')
             .then(function (response) {
                 if (response.data) {
                     that.setState({ topics: response.data });
