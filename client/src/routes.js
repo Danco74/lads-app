@@ -29,7 +29,7 @@ class Routes extends React.Component {
  
 
     axios
-      .get('http://localhost:3000/user/validate')
+      .get('./user/validate')
       .then(function (response) {
         if (response.data) {
           that.setState({ isLoggedIn: true, wasServerQueried: true, user: response.data });

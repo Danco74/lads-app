@@ -40,7 +40,7 @@ class Lesson extends Component {
         }
         // /:lessonId/sections
         let tempArray = this.props.match.pathname.split('/');
-        var url = `http://localhost:3000/api/lessons/${tempArray[tempArray.length-1]}/sections`
+        var url = `./api/lessons/${tempArray[tempArray.length-1]}/sections`
 
         axios.post(url, newSection) //<==Calling axios with a get request and pass the url
             .then(response => {
@@ -91,7 +91,7 @@ class Lesson extends Component {
 
         // /:lessonId/sections/:sectionId/content
         let tempArray = this.props.match.pathname.split('/');
-        var url = `http://localhost:3000/api/lessons/${tempArray[tempArray.length-1]}/sections/${this.state.sections[this.state.status.currentSection].sectionId}/content`
+        var url = `./api/lessons/${tempArray[tempArray.length-1]}/sections/${this.state.sections[this.state.status.currentSection].sectionId}/content`
 
         axios.post(url, newContent) //<==Calling axios with a get request and pass the url
             .then(response => {
@@ -122,7 +122,7 @@ class Lesson extends Component {
         }
         else if (this.state.status.currentContent === undefined) {
             // /sections/:sectionId
-            var url = `http://localhost:3000/api/lessons/sections/${this.state.sections[this.state.status.currentSection].sectionId}`
+            var url = `./api/lessons/sections/${this.state.sections[this.state.status.currentSection].sectionId}`
 
             axios.delete(url)
                 .then(response => {
@@ -144,7 +144,7 @@ class Lesson extends Component {
         }
         else {
             // /content/:contentId
-            var url = `http://localhost:3000/api/lessons/content/${this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent].contentId}`
+            var url = `./api/lessons/content/${this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent].contentId}`
 
             axios.delete(url)
                 .then(response => {
@@ -172,7 +172,7 @@ class Lesson extends Component {
         }
 
         // /content/:contentId
-        var url = `http://localhost:3000/api/lessons/content/${this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent].contentId}`
+        var url = `./api/lessons/content/${this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent].contentId}`
         let newContent = Object.assign({}, this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent]);
         newContent.type = newType;
         console.log(newContent);
@@ -198,7 +198,7 @@ class Lesson extends Component {
     editContent(newText, sectionIndex, contentIndex) {
         if (contentIndex >= 0) {
             // /content/:contentId
-            var url = `http://localhost:3000/api/lessons/content/${this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent].contentId}`
+            var url = `./api/lessons/content/${this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent].contentId}`
             let newContent = Object.assign({}, this.state.sections[sectionIndex].contents[contentIndex]);
             newContent.text = newText;
             console.log(newContent);
@@ -217,7 +217,7 @@ class Lesson extends Component {
         }
         else if (sectionIndex >= 0) {
             // /sections/:sectionId
-            var url = `http://localhost:3000/api/lessons/sections/${this.state.sections[this.state.status.currentSection].sectionId}`
+            var url = `./api/lessons/sections/${this.state.sections[this.state.status.currentSection].sectionId}`
             let newContent = Object.assign({}, this.state.sections[sectionIndex]);
             newContent.header = newText;
             console.log(newContent);
@@ -244,7 +244,7 @@ class Lesson extends Component {
                 description: ""
             }
             let tempArray = this.props.match.pathname.split('/');
-            var url = `http://localhost:3000/api/lessons/${tempArray[tempArray.length-1]}/title`
+            var url = `./api/lessons/${tempArray[tempArray.length-1]}/title`
             axios.put(url, newLessonStatus)
             .then(response => {
                 console.log(response)
@@ -341,7 +341,7 @@ class Lesson extends Component {
     componentDidMount() {
         //reeive db stuff
         let tempArray = this.props.match.pathname.split('/');
-        var url = `http://localhost:3000/api/lessons/${tempArray[tempArray.length-1]}`
+        var url = `./api/lessons/${tempArray[tempArray.length-1]}`
 
         axios.get(url) //<==Calling axios with a get request and pass the url
             .then(response => {
