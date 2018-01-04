@@ -8448,7 +8448,7 @@ var Lesson = function (_Component) {
                 viewIndex: this.state.status.currentSection >= 0 ? this.state.status.currentSection : 0
                 // /:lessonId/sections
             };var tempArray = this.props.match.pathname.split('/');
-            var url = 'http://localhost:3000/api/lessons/' + tempArray[tempArray.length - 1] + '/sections';
+            var url = './api/lessons/' + tempArray[tempArray.length - 1] + '/sections';
 
             _axios2.default.post(url, newSection) //<==Calling axios with a get request and pass the url
             .then(function (response) {
@@ -8501,7 +8501,7 @@ var Lesson = function (_Component) {
 
                 // /:lessonId/sections/:sectionId/content
             };var tempArray = this.props.match.pathname.split('/');
-            var url = 'http://localhost:3000/api/lessons/' + tempArray[tempArray.length - 1] + '/sections/' + this.state.sections[this.state.status.currentSection].sectionId + '/content';
+            var url = './api/lessons/' + tempArray[tempArray.length - 1] + '/sections/' + this.state.sections[this.state.status.currentSection].sectionId + '/content';
 
             _axios2.default.post(url, newContent) //<==Calling axios with a get request and pass the url
             .then(function (response) {
@@ -8532,7 +8532,7 @@ var Lesson = function (_Component) {
                 return;
             } else if (this.state.status.currentContent === undefined) {
                 // /sections/:sectionId
-                var url = 'http://localhost:3000/api/lessons/sections/' + this.state.sections[this.state.status.currentSection].sectionId;
+                var url = './api/lessons/sections/' + this.state.sections[this.state.status.currentSection].sectionId;
 
                 _axios2.default.delete(url).then(function (response) {
                     console.log(response);
@@ -8548,7 +8548,7 @@ var Lesson = function (_Component) {
                 });
             } else {
                 // /content/:contentId
-                var url = 'http://localhost:3000/api/lessons/content/' + this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent].contentId;
+                var url = './api/lessons/content/' + this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent].contentId;
 
                 _axios2.default.delete(url).then(function (response) {
                     console.log(response);
@@ -8574,7 +8574,7 @@ var Lesson = function (_Component) {
             }
 
             // /content/:contentId
-            var url = 'http://localhost:3000/api/lessons/content/' + this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent].contentId;
+            var url = './api/lessons/content/' + this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent].contentId;
             var newContent = Object.assign({}, this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent]);
             newContent.type = newType;
             console.log(newContent);
@@ -8598,7 +8598,7 @@ var Lesson = function (_Component) {
 
             if (contentIndex >= 0) {
                 // /content/:contentId
-                var url = 'http://localhost:3000/api/lessons/content/' + this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent].contentId;
+                var url = './api/lessons/content/' + this.state.sections[this.state.status.currentSection].contents[this.state.status.currentContent].contentId;
                 var newContent = Object.assign({}, this.state.sections[sectionIndex].contents[contentIndex]);
                 newContent.text = newText;
                 console.log(newContent);
@@ -8616,7 +8616,7 @@ var Lesson = function (_Component) {
                 });
             } else if (sectionIndex >= 0) {
                 // /sections/:sectionId
-                var url = 'http://localhost:3000/api/lessons/sections/' + this.state.sections[this.state.status.currentSection].sectionId;
+                var url = './api/lessons/sections/' + this.state.sections[this.state.status.currentSection].sectionId;
                 var _newContent = Object.assign({}, this.state.sections[sectionIndex]);
                 _newContent.header = newText;
                 console.log(_newContent);
@@ -8641,7 +8641,8 @@ var Lesson = function (_Component) {
                     description: ""
                 };
                 var tempArray = this.props.match.pathname.split('/');
-                var url = 'http://localhost:3000/api/lessons/' + tempArray[tempArray.length - 1] + '/title';
+                var url = './api/lessons/' + tempArray[tempArray.length - 1] + '/title';
+
                 _axios2.default.put(url, newLessonStatus).then(function (response) {
                     console.log(response);
                     if (!response.data.affectedRows || response.data.affectedRows === 0) {
@@ -8736,7 +8737,7 @@ var Lesson = function (_Component) {
 
             //reeive db stuff
             var tempArray = this.props.match.pathname.split('/');
-            var url = 'http://localhost:3000/api/lessons/' + tempArray[tempArray.length - 1];
+            var url = './api/lessons/' + tempArray[tempArray.length - 1];
 
             _axios2.default.get(url) //<==Calling axios with a get request and pass the url
             .then(function (response) {
