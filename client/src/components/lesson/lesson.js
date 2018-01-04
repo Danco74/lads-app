@@ -245,6 +245,7 @@ class Lesson extends Component {
             }
             let tempArray = this.props.match.pathname.split('/');
             var url = `./api/lessons/${tempArray[tempArray.length-1]}/title`
+            
             axios.put(url, newLessonStatus)
             .then(response => {
                 console.log(response)
