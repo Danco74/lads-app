@@ -18,7 +18,7 @@ class TeacherHome extends Component {
     componentWillMount() {
         let that = this;
         axios
-        .get('./api/students')
+        .get('api/students')
         .then(function (response) {
             if (response.data) {
                 that.setState({ students: response.data });
